@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat+Subrayada:wght@700&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+$dark: #ffa500;
+$light: #008080;
+$medium: #e0ffff;
+//
+$second: #a5121f;
+$primary: #f58224;
+$nav: #f2f2f2;
+$CP: #2e86ab;
+$cs: #ab2e2e;
+$ap: #f5dd24;
+$as: #1fa52f;
+$lightGrey: #c0c0c0;
+$darckGrey: #333333;
+$background: #fdf5ed;
+$gr: #7f5e46;
+body {
+  // height: 300vh;
+}

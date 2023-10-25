@@ -1,0 +1,54 @@
+@use "../../App.scss" as *;
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  padding: 1rem 7vw;
+  z-index: 100000;
+  .nav_logo {
+    img {
+      cursor: pointer;
+      width: 10rem;
+    }
+  }
+  .nav_links {
+    display: flex;
+    gap: 2.2rem;
+    .nav_link {
+      color: #000;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.5s;
+      &:hover {
+        color: $primary;
+      }
+    }
+    .nav_link_active {
+      color: $second;
+    }
+  }
+  .nav_btn {
+    button {
+      padding: 0.7rem 2rem;
+      cursor: pointer;
+      transition: 0.5s;
+      border: none;
+      background-color: $primary;
+      border-radius: 7px;
+      color: #fff;
+      font-size: 16px;
+      &:hover {
+        background-color: #fff;
+        color: $primary;
+        outline: 1px solid $primary;
+      }
+    }
+  }
+}

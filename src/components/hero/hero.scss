@@ -1,0 +1,51 @@
+@use "../../App.scss" as *;
+.hero_container {
+  position: relative;
+  height: 300vh;
+}
+.pos_absolute {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.man {
+  inset: inherit !important;
+  bottom: 0 !important;
+  right: 0 !important;
+}
+.hero_content {
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  position: relative;
+  gap: 3rem;
+  margin-top: 22vh;
+  margin-left: 7vw;
+  width: 40vw;
+  h1 {
+    font-size: 60px;
+    color: $primary;
+  }
+  p {
+    font-size: 23.44px;
+    color: $darckGrey;
+  }
+  button {
+    width: fit-content;
+    padding: 0.5rem 1.3rem;
+    font-size: 18px;
+    background-color: $primary;
+    color: #fff;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 4px 4px 8px #852800;
+    transition: 0.5s;
+    &:hover {
+      background-color: #fff;
+      color: $primary;
+      outline: 1px solid $primary;
+      box-shadow: 4px 4px 8px #ffffff00;
+    }
+  }
+}
