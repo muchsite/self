@@ -20,6 +20,22 @@ $lightGrey: #c0c0c0;
 $darckGrey: #333333;
 $background: #fdf5ed;
 $gr: #7f5e46;
-body {
-  // height: 300vh;
+$breack-up: (
+  "small": "600px",
+  "medium": "1164px",
+);
+$breack-down: (
+  "medium": "599px",
+  "large": "1163px",
+);
+
+@mixin breack_up($size) {
+  @media (min-width: map-get($breack-up, $size)) {
+    @content;
+  }
+}
+@mixin breack_down($size) {
+  @media (max-width: map-get($breack-down, $size)) {
+    @content;
+  }
 }

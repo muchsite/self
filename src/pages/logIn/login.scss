@@ -2,16 +2,36 @@
 
 .login_container {
   width: 100%;
-  height: 100vh;
+  height: 120vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  background-image: url("../../images/s_back.svg");
+  background-position: cover;
+  background-size: cover;
+  background-color: rgb(250, 167, 73);
+  .log_in_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    h2 {
+      color: $second;
+    }
+    img {
+      width: 7rem;
+    }
+  }
   form {
     width: 30vw;
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    background-color: #fff;
+    margin-right: 10vw;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(139, 138, 135);
     .login_div {
       display: flex;
       width: 100%;
@@ -24,6 +44,7 @@
         border-radius: 5px;
         outline: 1px solid $second;
         border: none;
+        width: 100%;
         &:focus {
           outline: 1px solid $primary;
         }

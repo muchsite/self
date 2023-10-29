@@ -33,22 +33,31 @@ export const CreateMainContext = ({ children }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      const res = await axios.post(baseURL + "login/", { email, password });
-      const { id, access, is_admin, is_faclitator, refresh } = res.data;
-      localStorage.setItem("token", access);
-      localStorage.setItem("refresh", refresh);
-      if (is_admin && is_faclitator) {
-        navigate(`/dashboard/admin/${id}`);
-      }
-      if (!is_admin && is_faclitator) {
-        navigate(`/dashboard/facilitator/${id}`);
-      }
-      if (!is_admin && !is_faclitator) {
-        navigate(`/dashboard/user/${id}`);
-      }
-    } catch (error) {
-      console.log(error);
+    // try {
+    //   const res = await axios.post(baseURL + "login/", { email, password });
+    //   const { id, access, is_admin, is_faclitator, refresh } = res.data;
+    //   localStorage.setItem("token", access);
+    //   localStorage.setItem("refresh", refresh);
+    //   if (is_admin && is_faclitator) {
+    //     navigate(`/dashboard/admin/${id}`);
+    //   }
+    //   if (!is_admin && is_faclitator) {
+    //     navigate(`/dashboard/facilitator/${id}`);
+    //   }
+    //   if (!is_admin && !is_faclitator) {
+    //     navigate(`/dashboard/user/${id}`);
+    //   }
+    // } catch (error) {
+    //   console.log(error);
+    // }
+    if (email == "a") {
+      navigate(`/dashboard/admin/${password}/home`);
+    }
+    if (email == "s") {
+      navigate(`/dashboard/user/${password}/home`);
+    }
+    if (email == "f") {
+      navigate(`/dashboard/facilitator/${password}/home`);
     }
   };
 

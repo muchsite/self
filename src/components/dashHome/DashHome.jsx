@@ -54,21 +54,27 @@ const DashHpme = () => {
       loss: 24401,
     },
   ];
+  const options = {
+    legend: {
+      labels: {
+        fontColor: "#ffffff",
+      },
+    },
+  };
   const [userData, setUserData] = useState({
     labels: data.map((item) => item.year),
     datasets: [
       {
         label: "User Gained",
         data: data.map((item) => item.value),
-        backgroundColor: [
-          "rgba(75,192,192,1)",
-          "#ecf0f1",
-          "#50AF95",
-          "#f3ba2f",
-          "#2a71d0",
-        ],
-        borderColor: "#fff",
-        borderWidth: 2,
+        borderColor: "#00F69E",
+        borderWidth: 4,
+        cubicInterpolationMode: "monotone",
+        legend: {
+          labels: {
+            fontColor: "#ffffff",
+          },
+        },
       },
     ],
   });
@@ -92,14 +98,18 @@ const DashHpme = () => {
         );
       }
     };
-    fetchData();
+    // fetchData();
   }, []);
-  console.log(dataf);
+  // console.log(dataf);
   return (
     <div className="dashHome_container">
+      <div className="dashboard_pendings">
+        <div className="pending"></div>
+      </div>
       <div className="chart_container">
+        <h2>Users Average Gain: 200</h2>
         <div className="chart">
-          <Line data={userData} />
+          <Line data={userData} options={options} />
         </div>
       </div>
     </div>

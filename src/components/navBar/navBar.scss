@@ -1,5 +1,12 @@
 @use "../../App.scss" as *;
-
+.fixed {
+  position: fixed;
+  background: rgba(255, 255, 255, 0.56);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(11.5px);
+  -webkit-backdrop-filter: blur(11.5px);
+  padding: 0.3rem 7vw;
+}
 nav {
   display: flex;
   justify-content: space-between;
@@ -8,33 +15,27 @@ nav {
   width: 100%;
   padding: 1rem 7vw;
   z-index: 100000;
+  transition: 0.3s;
   .nav_logo {
     img {
       cursor: pointer;
       width: 10rem;
+      @include breack_down(large) {
+        width: 7rem;
+      }
     }
   }
   .nav_links {
     display: flex;
     gap: 2.2rem;
-    .nav_link {
-      color: #000;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      transition: 0.5s;
-      &:hover {
-        color: $primary;
-      }
-    }
-    .nav_link_active {
-      color: $second;
+    @include breack_down(large) {
+      display: none !important;
     }
   }
   .nav_btn {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     button {
       padding: 0.7rem 2rem;
       cursor: pointer;
@@ -44,6 +45,10 @@ nav {
       border-radius: 7px;
       color: #fff;
       font-size: 16px;
+      @include breack_down(large) {
+        padding: 0.5rem 1rem;
+        font-size: 12px;
+      }
       &:hover {
         background-color: #fff;
         color: $primary;
@@ -51,4 +56,90 @@ nav {
       }
     }
   }
+}
+.nav_link {
+  color: #000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: 0.5s;
+  @include breack_down(large) {
+    color: #fff;
+  }
+  &:hover {
+    @include breack_up(medium) {
+      color: $primary;
+    }
+  }
+}
+.nav_link_active {
+  color: $second;
+}
+.ham {
+  background-color: $primary;
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: -2000%;
+  left: 0;
+  transition: 1s;
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding-top: 2rem;
+  @include breack_up(medium) {
+    display: none !important;
+  }
+}
+.open_ham {
+  top: 5rem;
+}
+#menu-wrapper #hamburger-menu {
+  position: relative;
+  width: 25px;
+  height: 20px;
+  margin: 15px;
+  cursor: pointer;
+  @include breack_up(medium) {
+    display: none !important;
+  }
+}
+
+#menu-wrapper #hamburger-menu span {
+  opacity: 1;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 10px;
+  color: rgb(0, 0, 0);
+  background-color: $second;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: 0.4s ease-in-out;
+}
+
+#menu-wrapper #hamburger-menu span:nth-child(1) {
+  top: 0;
+}
+#menu-wrapper #hamburger-menu span:nth-child(2) {
+  top: 9px;
+}
+#menu-wrapper #hamburger-menu span:nth-child(3) {
+  top: 18px;
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(1) {
+  transform: translateY(9px) rotate(135deg);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-60px);
+}
+#menu-wrapper #hamburger-menu.open span:nth-child(3) {
+  transform: translateY(-9px) rotate(-135deg);
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import { useMainContext } from "../../utils/context";
+import logo from "../../images/BlackLogo.png";
 import "./login.scss";
 const LogIn = () => {
   const { email, setEmail, password, setPassword, handleSubmit } =
@@ -8,6 +9,10 @@ const LogIn = () => {
   return (
     <div className="login_container">
       <form onSubmit={handleSubmit}>
+        <div className="log_in_header">
+          <h2>Log In</h2>
+          <img src={logo} alt="" />
+        </div>
         <div className="login_div">
           <label htmlFor="">Email:</label>
           <input

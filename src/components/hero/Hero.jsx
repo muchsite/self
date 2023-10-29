@@ -6,7 +6,7 @@ import over from "../../images/over.png";
 import "./hero.scss";
 const Hero = () => {
   return (
-    <div className="hero_container">
+    <section className="hero_container">
       <ParallaxBanner
         style={{ width: "100%", height: "110vh", objectFit: "cover" }}
       >
@@ -37,7 +37,7 @@ const Hero = () => {
           <img src={man} alt="" />
         </ParallaxBannerLayer>
       </ParallaxBanner>
-    </div>
+    </section>
   );
 };
 

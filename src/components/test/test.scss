@@ -1,0 +1,95 @@
+@use "../../App.scss" as *;
+.test_container {
+  background-color: $gr;
+  padding: 5rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .test_contetnt {
+    background-color: #fff;
+    box-shadow: 0px 0px 100px #e0d7b8;
+    width: 80vw;
+    min-height: 20rem;
+    padding: 2rem;
+    border-radius: 10px;
+    display: flex;
+    overflow: hidden;
+    justify-content: space-between;
+    .test_title {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      h2 {
+        color: 5e6282;
+        font-size: 18px;
+      }
+      h3 {
+        font-size: 50px;
+        color: #14183e;
+      }
+      .test_buttons {
+        display: flex;
+        gap: 1rem;
+        .test_button {
+          width: 15px;
+          height: 15px;
+          border-radius: 50%;
+          border: 3px solid #39425d;
+          cursor: pointer;
+        }
+        .test_button_active {
+          background-color: #39425d;
+        }
+      }
+    }
+    .test_items {
+      margin-top: 1rem;
+      width: 50%;
+      position: relative;
+      .test_item {
+        width: 30vw;
+        background-color: #f4ece5;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        position: absolute;
+        .test_item_realtive {
+          position: relative;
+          padding: 2rem 2rem;
+          img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-50%, -50%);
+          }
+          .test_info {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            h4 {
+              margin-bottom: 5px;
+            }
+          }
+        }
+        box-shadow: 0 0 80px #090b1f67;
+        transition: 1s;
+      }
+
+      .pre {
+        top: -20rem;
+        left: -20rem;
+      }
+      .current {
+        top: 0;
+        left: 0;
+      }
+      .next {
+        top: 5rem;
+        left: 5rem;
+      }
+      .next_2 {
+        top: 10rem;
+        left: 10rem;
+      }
+    }
+  }
+}

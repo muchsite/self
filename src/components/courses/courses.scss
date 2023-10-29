@@ -1,0 +1,91 @@
+@use "../../App.scss" as *;
+.courses_container {
+  // height: 200vh;
+  margin: 7rem 0;
+  width: 100%;
+  text-align: center;
+  h2 {
+    color: $primary;
+    font-size: 35px;
+  }
+}
+.courses_content {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+  .courses_items_container {
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+    .courses_item {
+      box-shadow: 0px 0px 38px #240d00;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      width: 27vw;
+      height: 40rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .courses_item_title {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../../images/c_b_1.svg");
+        background-size: cover;
+        color: #fff;
+      }
+      .courses_item_title_2 {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-image: url("../../images/c_b_2.svg");
+        background-size: cover;
+        color: #fff;
+      }
+      .course_info {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(88, 68, 23, 0.664);
+        backdrop-filter: blur(15.1px);
+        -webkit-backdrop-filter: blur(15.1px);
+        transition: 0.5s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 100%;
+        h4 {
+          color: #fff;
+        }
+      }
+      .top_0 {
+        top: 0;
+      }
+    }
+  }
+}
+.course_background {
+  position: absolute;
+  width: 100%;
+  height: 50vh;
+  box-shadow: 0px 0px 38px #000000;
+  background-color: $gr;
+  top: 50%;
+  transform: translateY(-50%);
+}
