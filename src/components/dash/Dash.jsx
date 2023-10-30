@@ -29,52 +29,63 @@ const Dash = () => {
       navigate("group");
     }
   };
+  const hadleLogOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("refresh");
+    navigate("/login");
+  };
   useEffect(() => {
     setActiveDash(location.pathname.split("/")[4]);
-    console.log(activeDash);
   }, [location.pathname.split("/")[4]]);
   return (
     <div className="dash_side">
-      <img src={logo} alt="" className="dash_logo" />
-      <div className="dahs_links">
-        <div
-          onClick={() => handleNavigate("home")}
-          className={`dash_link ${activeDash == "home" && "active_dash_link"}`}
-        >
-          <AiFillHome /> HOME
+      <div className="pos_fixed">
+        <img src={logo} alt="" className="dash_logo" />
+        <div className="dahs_links">
+          <div
+            onClick={() => handleNavigate("home")}
+            className={`dash_link ${
+              activeDash == "home" && "active_dash_link"
+            }`}
+          >
+            <AiFillHome /> HOME
+          </div>
+          <div
+            onClick={() => handleNavigate("profile")}
+            className={`dash_link ${
+              activeDash == "profile" && "active_dash_link"
+            }`}
+          >
+            <MdPerson2 /> PROFILE
+          </div>
+          {role == "admin" && (
+            <>
+              <div
+                onClick={() => handleNavigate("allgroups")}
+                className={`dash_link ${
+                  activeDash == "allgroups" && "active_dash_link"
+                }`}
+              >
+                <MdGroups2 /> ALL GROUPS
+              </div>
+            </>
+          )}
+          {role == "facilitator" && (
+            <>
+              <div
+                onClick={() => handleNavigate("group")}
+                className={`dash_link ${
+                  activeDash == "group" && "active_dash_link"
+                }`}
+              >
+                <MdGroups2 /> GROUP
+              </div>
+            </>
+          )}
+          <div onClick={() => hadleLogOut()} className={`dash_link `}>
+            <AiFillHome /> Log Out
+          </div>
         </div>
-        <div
-          onClick={() => handleNavigate("profile")}
-          className={`dash_link ${
-            activeDash == "profile" && "active_dash_link"
-          }`}
-        >
-          <MdPerson2 /> PROFILE
-        </div>
-        {role == "admin" && (
-          <>
-            <div
-              onClick={() => handleNavigate("allgroups")}
-              className={`dash_link ${
-                activeDash == "allgroups" && "active_dash_link"
-              }`}
-            >
-              <MdGroups2 /> ALL GROUPS
-            </div>
-          </>
-        )}
-        {role == "facilitator" && (
-          <>
-            <div
-              onClick={() => handleNavigate("group")}
-              className={`dash_link ${
-                activeDash == "group" && "active_dash_link"
-              }`}
-            >
-              <MdGroups2 /> GROUP
-            </div>
-          </>
-        )}
       </div>
     </div>
   );

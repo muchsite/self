@@ -1,14 +1,32 @@
-import React from "react";
-
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useMainContext } from "../../utils/context";
+import "./profile.scss";
 const DashProfile = () => {
-  return (
-    <h1>
-      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, rem quos
-      pariatur nulla eligendi aliquam, nesciunt nostrum iste molestias
-      consectetur ipsum laborum sit eaque dolores veritatis expedita earum
-      facere et.
-    </h1>
-  );
+  const [profile, setProfile] = useState({});
+  const [loading, setLoading] = useState(true);
+  const { baseURL, refreshToken } = useMainContext();
+  useEffect(() => {
+    const fetchProfiel = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await axios.get(baseURL + `api/profile/`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setProfile(res.data);
+        setLoading(false);
+      } catch (error) {
+        refreshToken(error, fetchProfiel);
+        setLoading(false);
+        setLoading(false);
+      }
+    };
+    fetchProfiel();
+  }, []);
+  console.log(profile);
+  return <div className="profile_container"></div>;
 };
 
 export default DashProfile;
