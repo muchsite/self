@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import BlackLogo from "../../images/BlackLogo.svg";
 import close from "../../images/close.svg";
 import Loading from "../loading/Loading";
+import LoadnigMain from "../loading/LoadnigMain";
 const DashHpme = () => {
   const { baseURL, refreshToken } = useMainContext();
   const [sending, setSending] = useState(false);
@@ -17,6 +18,7 @@ const DashHpme = () => {
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
   const [japa, setJapa] = useState({});
+
   const [reading, setReading] = useState({});
   const [listening, setListening] = useState({});
   const [service, setService] = useState({});
@@ -47,14 +49,14 @@ const DashHpme = () => {
       try {
         const token = localStorage.getItem("token");
         const res = await axios.get(
-          baseURL + `api/user/report/?user_id=${id}`,
+          baseURL + `api/user/report/?month=10&year=2023`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }
         );
-        // setData(res.data);
+
         const data = res.data;
         setJapa({
           labels: data.graph_data.date,
@@ -150,22 +152,10 @@ const DashHpme = () => {
     setchanting_finish_time(pending[index].chanting_finish_time);
     setchanting_start_time(pending[index].chanting_start_time);
   };
-  const b = {
-    day_rest_duration: day_rest_duration,
-    hearing_duration: hearing_duration,
-    reading_duration: reading_duration,
-    service_duration: service_duration,
-    sleep_time: sleep_time,
-    chanting_finish_time: chanting_finish_time,
-    chanting_start_time: chanting_start_time,
-    wakeup_time: wakeup_time,
-    ...pending[pRowId],
-  };
-  console.log(b);
+
   const handleSending = async () => {
     setSending(true);
     setErrorMessage("");
-
     try {
       const token = localStorage.getItem("token");
       const config = {
@@ -175,7 +165,17 @@ const DashHpme = () => {
       };
       const res = await axios.post(
         baseURL + `api/user/report/?report_id=${pending[pRowId].id}`,
-        b,
+        {
+          ...pending[pRowId],
+          day_rest_duration: day_rest_duration,
+          hearing_duration: hearing_duration,
+          reading_duration: reading_duration,
+          service_duration: service_duration,
+          sleep_time: sleep_time,
+          chanting_finish_time: chanting_finish_time,
+          chanting_start_time: chanting_start_time,
+          wakeup_time: wakeup_time,
+        },
         config
       );
       setSending(false);
@@ -188,10 +188,11 @@ const DashHpme = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       {loading ? (
-        <h1>Loading</h1>
+        <LoadnigMain color={"#00f69e"} />
       ) : (
         <div className="dashHome_container">
           {pending.length > 0 && (
@@ -286,13 +287,13 @@ const DashHpme = () => {
                 </form>
                 <div className="pending_btn_container">
                   <button onClick={handleSending}>Send</button>
-                  {sending && <Loading />}
+                  {sending && <Loading color={"#00f69e"} />}
                   <p>{errorMessage}</p>
                 </div>
               </div>
               <h2>Pending...</h2>
               <div className="dashboard_pendings">
-                {pending.map((item, index) => {
+                {pending?.map((item, index) => {
                   return (
                     <div
                       className="dashboard_pending"
@@ -320,32 +321,39 @@ const DashHpme = () => {
               </div>
             </div>
           )}
-
           <div className="charts_container">
-            <div className="chart_container">
-              <h2>Average Japa: {average.japa}</h2>
-              <div className="chart">
-                <Line data={japa} options={options} />
+            {japa.labels && (
+              <div className="chart_container">
+                <h2>Average Japa: {average.japa}</h2>
+                <div className="chart">
+                  <Line data={japa} options={options} />
+                </div>
               </div>
-            </div>
-            <div className="chart_container">
-              <h2>Average Reading: {average.reading}</h2>
-              <div className="chart">
-                <Line data={reading} options={options} />
+            )}
+            {reading.labels && (
+              <div className="chart_container">
+                <h2>Average Reading: {average.reading}</h2>
+                <div className="chart">
+                  <Line data={reading} options={options} />
+                </div>
               </div>
-            </div>
-            <div className="chart_container">
-              <h2>Average Listening: {average.listening}</h2>
-              <div className="chart">
-                <Line data={listening} options={options} />
+            )}
+            {listening.labels && (
+              <div className="chart_container">
+                <h2>Average Listening: {average.listening}</h2>
+                <div className="chart">
+                  <Line data={listening} options={options} />
+                </div>
               </div>
-            </div>
-            <div className="chart_container">
-              <h2>Average Service: {average.service}</h2>
-              <div className="chart">
-                <Line data={service} options={options} />
+            )}
+            {service.labels && (
+              <div className="chart_container">
+                <h2>Average Service: {average.service}</h2>
+                <div className="chart">
+                  <Line data={service} options={options} />
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       )}

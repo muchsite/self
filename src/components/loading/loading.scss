@@ -25,28 +25,18 @@
     font-size: 40px;
   }
   .ring-1 {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     margin: 0 auto;
-    padding: 20px;
-    border: 7px dashed #4b9cdb;
+    padding: 30px;
+    // border: 7px dashed #4b9cdb;
     border-radius: 100%;
   }
   .load-4 .ring-1 {
     animation: loadingD 1.5s 0.3s linear infinite;
   }
 }
-@keyframes loadingD {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
+
 .btn_l_container {
   display: flex;
   flex-direction: column;
@@ -66,5 +56,16 @@
   }
   .load-4 .ring-1 {
     animation: loadingD 1.5s 0.3s linear infinite;
+  }
+}
+@keyframes loadingD {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
