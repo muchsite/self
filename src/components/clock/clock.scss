@@ -1,0 +1,19 @@
+@use "../../App.scss" as *;
+
+.cl_contetn {
+  background-color: #fff;
+  .clock_btns {
+    float: right;
+    display: flex;
+    padding: 1rem;
+    gap: 2rem;
+    button {
+      padding: 0.3rem 0.7rem;
+      border: none;
+      background-color: $dashLime;
+      border-radius: 5px;
+      color: rgb(0, 56, 241);
+      cursor: pointer;
+    }
+  }
+}

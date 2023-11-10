@@ -1,6 +1,18 @@
 @use "../../App.scss" as *;
 .dashHome_container {
   .dashboard_pending_container {
+    .clock_container {
+      color: #fff;
+      position: fixed;
+      top: -220vh;
+      left: 0;
+      z-index: 201;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
     .pending_form {
       display: flex;
       flex-direction: column;
@@ -76,6 +88,7 @@
         }
       }
     }
+
     margin: 3rem;
     h2 {
       color: #00f69e;

@@ -10,6 +10,7 @@ import BlackLogo from "../../images/BlackLogo.svg";
 import close from "../../images/close.svg";
 import Loading from "../loading/Loading";
 import LoadnigMain from "../loading/LoadnigMain";
+import ClockTwo from "../clock/ClockTwo";
 const DashHpme = () => {
   const { baseURL, refreshToken } = useMainContext();
   const [sending, setSending] = useState(false);
@@ -34,7 +35,8 @@ const DashHpme = () => {
   const [chanting_finish_time, setchanting_finish_time] = useState("");
   const [chanting_start_time, setchanting_start_time] = useState("");
   const [wakeup_time, setwakeup_time] = useState("");
-
+  const [clockType, setClockType] = useState("");
+  const [openClock, setOpenClock] = useState(false);
   const options = {
     legend: {
       labels: {
@@ -188,6 +190,22 @@ const DashHpme = () => {
       console.log(error);
     }
   };
+  const convertToAmPm = (time24) => {
+    if (typeof time24 !== "string") return "Invalid time format";
+    const time = time24.split(":");
+    let hours = parseInt(time[0], 10);
+    const minutes = time[1];
+    if (hours < 0 || hours > 23) return "Invalid time format";
+    const suffix = hours >= 12 ? "PM" : "AM";
+    hours = ((hours + 11) % 12) + 1;
+    const time12 = `${hours}:${minutes} ${suffix}`;
+    return time12;
+  };
+  console.log(wakeup_time);
+  const handleOpenClock = (t) => {
+    setOpenClock(!openClock);
+    setClockType(t);
+  };
 
   return (
     <>
@@ -197,6 +215,72 @@ const DashHpme = () => {
         <div className="dashHome_container">
           {pending.length > 0 && (
             <div className="dashboard_pending_container">
+              <div className={`clock_container ${openClock && "top_0"}`}>
+                {clockType == "rest" && (
+                  <ClockTwo
+                    time={day_rest_duration}
+                    setTime={setday_rest_duration}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "wake" && (
+                  <ClockTwo
+                    time={wakeup_time}
+                    setTime={setwakeup_time}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "hearing" && (
+                  <ClockTwo
+                    time={hearing_duration}
+                    setTime={sethearing_duration}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "reading" && (
+                  <ClockTwo
+                    time={reading_duration}
+                    setTime={setreading_duration}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "service" && (
+                  <ClockTwo
+                    time={service_duration}
+                    setTime={setservice_duration}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "sleep" && (
+                  <ClockTwo
+                    time={sleep_time}
+                    setTime={setsleep_time}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "ch_f" && (
+                  <ClockTwo
+                    time={chanting_finish_time}
+                    setTime={setchanting_finish_time}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+                {clockType == "ch_s" && (
+                  <ClockTwo
+                    time={chanting_start_time}
+                    setTime={setchanting_start_time}
+                    openClock={openClock}
+                    setOpenClock={setOpenClock}
+                  />
+                )}
+              </div>
               <div className={`pending_form ${pRowId >= 0 && "top_0"}`}>
                 <div className="pending_form_header">
                   <img src={BlackLogo} alt="" className="pending_logo" />
@@ -212,76 +296,64 @@ const DashHpme = () => {
                     <label htmlFor="">Wakeup Time</label>
                     <input
                       type="text"
-                      value={wakeup_time}
-                      onChange={(e) => setwakeup_time(e.currentTarget.value)}
+                      value={convertToAmPm(wakeup_time)}
+                      onClick={() => handleOpenClock("wake")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Rest Duration</label>
                     <input
                       type="text"
-                      value={day_rest_duration}
-                      onChange={(e) =>
-                        setday_rest_duration(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(day_rest_duration)}
+                      onClick={() => handleOpenClock("rest")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Hearing Duration</label>
                     <input
                       type="text"
-                      value={hearing_duration}
-                      onChange={(e) =>
-                        sethearing_duration(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(hearing_duration)}
+                      onClick={() => handleOpenClock("hearing")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Reading Duration</label>
                     <input
                       type="text"
-                      value={reading_duration}
-                      onChange={(e) =>
-                        setreading_duration(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(reading_duration)}
+                      onClick={() => handleOpenClock("reading")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Service Duration</label>
                     <input
                       type="text"
-                      value={service_duration}
-                      onChange={(e) =>
-                        setservice_duration(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(service_duration)}
+                      onClick={() => handleOpenClock("service")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Sleeep Time</label>
                     <input
                       type="text"
-                      value={sleep_time}
-                      onChange={(e) => setsleep_time(e.currentTarget.value)}
+                      value={convertToAmPm(sleep_time)}
+                      onClick={() => handleOpenClock("sleep")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Chanting Finish Time</label>
                     <input
                       type="text"
-                      value={chanting_finish_time}
-                      onChange={(e) =>
-                        setchanting_finish_time(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(chanting_finish_time)}
+                      onClick={() => handleOpenClock("ch_f")}
                     />
                   </div>
                   <div className="pending_div">
                     <label htmlFor="">Chanting Start Time</label>
                     <input
                       type="text"
-                      value={chanting_start_time}
-                      onChange={(e) =>
-                        setchanting_start_time(e.currentTarget.value)
-                      }
+                      value={convertToAmPm(chanting_start_time)}
+                      onClick={() => handleOpenClock("ch_s")}
                     />
                   </div>
                 </form>
@@ -321,6 +393,7 @@ const DashHpme = () => {
               </div>
             </div>
           )}
+
           <div className="charts_container">
             {japa.labels && (
               <div className="chart_container">
