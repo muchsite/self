@@ -38,8 +38,7 @@ function App() {
               <Route path="home" element={<DashHome />} />
               <Route path="profile" element={<DashProfile />} />
               <Route path="allgroups" element={<DashAll />} />
-              <Route path="allgroups/group" element={<DashGroup />} />
-              <Route path="group" element={<DashGroup />} />
+              <Route path="allgroups/:groupId" element={<DashGroup />} />
             </Route>
           </Routes>
         </ParallaxProvider>

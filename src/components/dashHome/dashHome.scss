@@ -1,4 +1,67 @@
 @use "../../App.scss" as *;
+.df {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.dash_home_dates_container {
+  color: #00f69e;
+  display: flex;
+  padding: 2.5rem;
+  border-radius: 5px;
+  gap: 3rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: $blueBack;
+  // width: 50vw;
+  .dash_home_dates {
+    @include breack_down(large) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    align-items: flex-end;
+    .dah_home_input {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      select,
+      input {
+        background-color: $rightBack;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        padding: 7px 12px;
+        font-size: 16px;
+        width: 10rem;
+        height: 2.2rem;
+        color: #fff;
+        border-radius: 5px;
+      }
+    }
+    button {
+      padding: 0.7rem 2rem;
+      width: fit-content;
+      height: fit-content;
+      background-color: $rightBack;
+      cursor: pointer;
+      color: #00f69e;
+      outline: none;
+      border: none;
+      border-radius: 10px;
+      transition: 0.5s;
+      font-size: 16px;
+      &:hover {
+        background-color: #00f69e;
+        color: $rightBack;
+      }
+    }
+  }
+}
 .dashHome_container {
   .dashboard_pending_container {
     .clock_container {
@@ -46,6 +109,9 @@
       form {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
+        @include breack_down(large) {
+          grid-template-columns: 1fr 1fr;
+        }
 
         gap: 2rem;
         .pending_div {
@@ -58,6 +124,9 @@
             border-radius: 4px;
             border: none;
             outline: none;
+            @include breack_down(large) {
+              width: 40vw;
+            }
             &:focus {
               outline: 1px solid #00f69e;
             }
@@ -136,6 +205,10 @@
       gap: 2rem;
       .chart {
         width: 40vw;
+
+        @include breack_down(large) {
+          width: 90vw;
+        }
         background-color: rgb(7, 7, 12);
         padding: 2rem;
         //   margin: 5rem;
@@ -148,4 +221,13 @@
 }
 .top_0 {
   top: 0 !important;
+}
+.no_data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5rem;
+  color: #00f69e;
+  font-size: 25px;
 }

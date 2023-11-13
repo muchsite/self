@@ -6,27 +6,34 @@ import { MdGroups2, MdPerson2 } from "react-icons/md";
 import { useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
+import ham from "../../images/ham.svg";
+import close from "../../images/close.svg";
 const Dash = () => {
   const [activeDash, setActiveDash] = useState("");
+  const [openMenu, setOepenMenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { role } = useParams();
   const handleNavigate = (arg) => {
     if (arg == "home") {
       setActiveDash("home");
+      setOepenMenu(false);
       navigate("home");
     }
     if (arg == "profile") {
+      setOepenMenu(false);
       setActiveDash("profile");
       navigate("profile");
     }
     if (arg == "allgroups") {
+      setOepenMenu(false);
       setActiveDash("allgroups");
       navigate("allgroups");
     }
     if (arg == "group") {
+      setOepenMenu(false);
       setActiveDash("group");
-      navigate("group");
+      navigate("allgroups/:NON");
     }
   };
   const hadleLogOut = () => {
@@ -38,56 +45,69 @@ const Dash = () => {
     setActiveDash(location.pathname.split("/")[4]);
   }, [location.pathname.split("/")[4]]);
   return (
-    <div className="dash_side">
-      <div className="pos_fixed">
-        <img src={logo} alt="" className="dash_logo" />
-        <div className="dahs_links">
-          <div
-            onClick={() => handleNavigate("home")}
-            className={`dash_link ${
-              activeDash == "home" && "active_dash_link"
-            }`}
-          >
-            <AiFillHome /> HOME
+    <>
+      <div className="dash_ham" onClick={() => setOepenMenu(true)}>
+        <img src={ham} alt="" />
+      </div>
+      <div className={`dash_side ${openMenu && "dah_open"}`}>
+        <div className="pos_fixed">
+          <div className="dash_logo_container">
+            <img src={logo} alt="" className="dash_logo" />
+            <img
+              src={close}
+              alt=""
+              className="dash_close"
+              onClick={() => setOepenMenu(false)}
+            />
           </div>
-          <div
-            onClick={() => handleNavigate("profile")}
-            className={`dash_link ${
-              activeDash == "profile" && "active_dash_link"
-            }`}
-          >
-            <MdPerson2 /> PROFILE
-          </div>
-          {role == "admin" && (
-            <>
-              <div
-                onClick={() => handleNavigate("allgroups")}
-                className={`dash_link ${
-                  activeDash == "allgroups" && "active_dash_link"
-                }`}
-              >
-                <MdGroups2 /> ALL GROUPS
-              </div>
-            </>
-          )}
-          {role == "facilitator" && (
-            <>
-              <div
-                onClick={() => handleNavigate("group")}
-                className={`dash_link ${
-                  activeDash == "group" && "active_dash_link"
-                }`}
-              >
-                <MdGroups2 /> GROUP
-              </div>
-            </>
-          )}
-          <div onClick={() => hadleLogOut()} className={`dash_link `}>
-            <AiFillHome /> Log Out
+          <div className="dahs_links">
+            <div
+              onClick={() => handleNavigate("home")}
+              className={`dash_link ${
+                activeDash == "home" && "active_dash_link"
+              }`}
+            >
+              <AiFillHome /> HOME
+            </div>
+            <div
+              onClick={() => handleNavigate("profile")}
+              className={`dash_link ${
+                activeDash == "profile" && "active_dash_link"
+              }`}
+            >
+              <MdPerson2 /> PROFILE
+            </div>
+            {role == "admin" && (
+              <>
+                <div
+                  onClick={() => handleNavigate("allgroups")}
+                  className={`dash_link ${
+                    activeDash == "allgroups" && "active_dash_link"
+                  }`}
+                >
+                  <MdGroups2 /> ALL GROUPS
+                </div>
+              </>
+            )}
+            {role == "facilitator" && (
+              <>
+                <div
+                  onClick={() => handleNavigate("group")}
+                  className={`dash_link ${
+                    activeDash == "group" && "active_dash_link"
+                  }`}
+                >
+                  <MdGroups2 /> GROUP
+                </div>
+              </>
+            )}
+            <div onClick={() => hadleLogOut()} className={`dash_link `}>
+              <AiFillHome /> Log Out
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

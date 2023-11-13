@@ -5,19 +5,21 @@ import "./dashHome.scss";
 import { useEffect } from "react";
 import axios from "axios";
 import { useMainContext } from "../../utils/context";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import BlackLogo from "../../images/BlackLogo.svg";
 import close from "../../images/close.svg";
 import Loading from "../loading/Loading";
 import LoadnigMain from "../loading/LoadnigMain";
 import ClockTwo from "../clock/ClockTwo";
+import { useSearchParams } from "react-router-dom";
 const DashHpme = () => {
   const { baseURL, refreshToken } = useMainContext();
+  const [resData, setResData] = useState({});
   const [sending, setSending] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { id } = useParams();
+
   const [japa, setJapa] = useState({});
 
   const [reading, setReading] = useState({});
@@ -37,6 +39,7 @@ const DashHpme = () => {
   const [wakeup_time, setwakeup_time] = useState("");
   const [clockType, setClockType] = useState("");
   const [openClock, setOpenClock] = useState(false);
+  const [refetch, setRefetch] = useState(false);
   const options = {
     legend: {
       labels: {
@@ -50,91 +53,178 @@ const DashHpme = () => {
       setLoading(true);
       try {
         const token = localStorage.getItem("token");
-        const res = await axios.get(
-          baseURL + `api/user/report/?month=10&year=2023`,
-          {
+        if (month && year) {
+          console.log(baseURL + `api/user/report?month=${month}&year=${year}`);
+          const res = await axios.get(
+            baseURL + `api/user/report/?month=${month}&year=${year}`,
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          const data = res.data;
+          console.log(data);
+          setResData(data);
+          setJapa({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Japa",
+                data: data.graph_data.japa,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setReading({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Reading",
+                data: data.graph_data.reading,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setListening({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Listening",
+                data: data.graph_data.listening,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setService({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Service",
+                data: data.graph_data.service,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setAverage({
+            japa: data.japa_average,
+            reading: data.reading_average,
+            listening: data.listening_average,
+            service: data.service_average,
+          });
+          setPending(data.pending);
+        } else {
+          const res = await axios.get(baseURL + `api/user/report/`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
-          }
-        );
+          });
+          const data = res.data;
+          setJapa({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Japa",
+                data: data.graph_data.japa,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setReading({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Reading",
+                data: data.graph_data.reading,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setListening({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Listening",
+                data: data.graph_data.listening,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setService({
+            labels: data.graph_data.date,
+            datasets: [
+              {
+                label: "Service",
+                data: data.graph_data.service,
+                borderColor: "#00F69E",
+                borderWidth: 4,
+                cubicInterpolationMode: "monotone",
+                legend: {
+                  labels: {
+                    fontColor: "#ffffff",
+                  },
+                },
+              },
+            ],
+          });
+          setAverage({
+            japa: data.japa_average,
+            reading: data.reading_average,
+            listening: data.listening_average,
+            service: data.service_average,
+          });
+          setPending(data.pending);
+        }
 
-        const data = res.data;
-        setJapa({
-          labels: data.graph_data.date,
-          datasets: [
-            {
-              label: "Japa",
-              data: data.graph_data.japa,
-              borderColor: "#00F69E",
-              borderWidth: 4,
-              cubicInterpolationMode: "monotone",
-              legend: {
-                labels: {
-                  fontColor: "#ffffff",
-                },
-              },
-            },
-          ],
-        });
-        setReading({
-          labels: data.graph_data.date,
-          datasets: [
-            {
-              label: "Reading",
-              data: data.graph_data.reading,
-              borderColor: "#00F69E",
-              borderWidth: 4,
-              cubicInterpolationMode: "monotone",
-              legend: {
-                labels: {
-                  fontColor: "#ffffff",
-                },
-              },
-            },
-          ],
-        });
-        setListening({
-          labels: data.graph_data.date,
-          datasets: [
-            {
-              label: "Listening",
-              data: data.graph_data.listening,
-              borderColor: "#00F69E",
-              borderWidth: 4,
-              cubicInterpolationMode: "monotone",
-              legend: {
-                labels: {
-                  fontColor: "#ffffff",
-                },
-              },
-            },
-          ],
-        });
-        setService({
-          labels: data.graph_data.date,
-          datasets: [
-            {
-              label: "Service",
-              data: data.graph_data.service,
-              borderColor: "#00F69E",
-              borderWidth: 4,
-              cubicInterpolationMode: "monotone",
-              legend: {
-                labels: {
-                  fontColor: "#ffffff",
-                },
-              },
-            },
-          ],
-        });
-        setAverage({
-          japa: data.japa_average,
-          reading: data.reading_average,
-          listening: data.listening_average,
-          service: data.service_average,
-        });
-        setPending(data.pending);
         setLoading(false);
       } catch (error) {
         refreshToken(error, fetchData);
@@ -142,7 +232,7 @@ const DashHpme = () => {
       }
     };
     fetchData();
-  }, [sent]);
+  }, [sent, refetch]);
   const hadnlePendignOpen = (index) => {
     setPRowId(index);
     setwakeup_time(pending[index].wakeup_time);
@@ -201,16 +291,64 @@ const DashHpme = () => {
     const time12 = `${hours}:${minutes} ${suffix}`;
     return time12;
   };
-  console.log(wakeup_time);
+
   const handleOpenClock = (t) => {
     setOpenClock(!openClock);
     setClockType(t);
   };
 
+  // search
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [month, setMonth] = useState(searchParams.get("month"));
+  const [year, setYear] = useState(searchParams.get("year"));
+
+  const navigate = useNavigate();
+  const handleSearch = () => {
+    navigate(`?month=${month}&year=${year}`);
+    setRefetch(!refetch);
+  };
   return (
     <>
+      <div className="df">
+        <div className="dash_home_dates_container">
+          <h2>Search a range of data</h2>
+          <div className="dash_home_dates">
+            <div className="dah_home_input">
+              <label htmlFor="selectInput">Select a month:</label>
+              <select
+                id="selectInput"
+                value={month}
+                onChange={(e) => setMonth(e.target.value)}
+              >
+                <option value="">Select a month</option>
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="8">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </div>
+            <div className="dah_home_input">
+              <label htmlFor="selectInput">Selet an year:</label>
+              <input type="number" onChange={(e) => setYear(e.target.value)} />
+            </div>
+            <button onClick={handleSearch}>Search</button>
+          </div>
+        </div>
+      </div>
       {loading ? (
         <LoadnigMain color={"#00f69e"} />
+      ) : resData.message == "No data for your provided range of days" ? (
+        <div className="no_data">
+          <h2>No data for your provided range of days</h2>
+        </div>
       ) : (
         <div className="dashHome_container">
           {pending.length > 0 && (
@@ -393,7 +531,6 @@ const DashHpme = () => {
               </div>
             </div>
           )}
-
           <div className="charts_container">
             {japa.labels && (
               <div className="chart_container">

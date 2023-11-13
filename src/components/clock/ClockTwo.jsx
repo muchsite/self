@@ -18,10 +18,6 @@ const ClockTwo = ({ time, setTime, openClock, setOpenClock }) => {
     setTime(initial);
     setOpenClock(!openClock);
   };
-  const handleCancel = () => {
-    console.log("asdf");
-    setOpenClock(!openClock);
-  };
 
   return (
     <div className="cl_contetn">

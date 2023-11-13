@@ -1,0 +1,50 @@
+@use "../../App.scss" as *;
+.single_group_container {
+  .single_grup_content {
+    .group_info {
+      display: flex;
+      justify-content: space-around;
+      .group_details {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-size: 20px;
+        width: 50%;
+        color: $dashLime;
+        span {
+          //   color: #00f69e;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+.students {
+  margin: 5rem 0;
+  color: #fff;
+  padding-left: 2rem;
+  .students_header {
+    display: flex;
+    p {
+      padding: 8px;
+      outline: 1px solid rgb(5, 13, 131);
+      width: 21%;
+    }
+  }
+  .student_details {
+    display: flex;
+    p {
+      padding: 8px;
+      width: 21%;
+      outline: 1px solid rgb(5, 13, 131);
+    }
+    img {
+      outline: 1px solid rgb(5, 13, 131);
+      padding: 8px;
+      width: 21%;
+    }
+  }
+}
+.gender {
+  width: 8% !important;
+}
