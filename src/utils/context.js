@@ -10,6 +10,7 @@ export const CreateMainContext = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [logInLoading, setLoginLoading] = useState(false);
+  const [loginError, setLoginError] = useState({});
   const [mainData, setMainData] = useState({});
   const navigate = useNavigate();
   const fetchData = async (url, setData, setError) => {
@@ -58,6 +59,7 @@ export const CreateMainContext = ({ children }) => {
   };
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginLoading(true);
     try {
       const res = await axios.post(baseURL + "login/", { email, password });
       const { id, access, is_admin, is_faclitator, refresh } = res.data;
@@ -72,7 +74,13 @@ export const CreateMainContext = ({ children }) => {
       if (!is_admin && !is_faclitator) {
         navigate(`/dashboard/user/${id}/home`);
       }
+      setLoginError({});
+      setEmail("");
+      setPassword("");
+      setLoginLoading(false);
     } catch (error) {
+      setLoginLoading(false);
+      setLoginError(error.response.data.error);
       console.log(error);
     }
   };
@@ -88,6 +96,8 @@ export const CreateMainContext = ({ children }) => {
         refreshToken,
         fetchData,
         baseURL,
+        logInLoading,
+        loginError,
       }}
     >
       {children}

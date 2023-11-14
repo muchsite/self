@@ -35,7 +35,7 @@ const DashGroup = () => {
     };
     fetchProfiel();
   }, []);
-
+  console.log(student);
   return (
     <>
       {loading ? (
@@ -45,7 +45,7 @@ const DashGroup = () => {
           <div className="single_group_container">
             <div className="single_grup_content">
               <div className="group_info">
-                <img src={group.group_image} alt="" />
+                <img src={group.group_image} alt="" className="group_img" />
                 <div className="group_details">
                   <p>
                     Name: <span>{group.name}</span>
@@ -71,13 +71,23 @@ const DashGroup = () => {
                 </div>
                 {student.map((item, index) => {
                   return (
-                    <div className="student_details" key={index}>
-                      <p>{item.email}</p>
-                      <img src={item.profile_image} alt="Profile Image" />
-                      <p>{item.profession}</p>
-                      <p>{item.dob}</p>
-                      <p className="gender">{item.gender}</p>
-                    </div>
+                    <Link
+                      className={`student_details ${
+                        index % 2 == 0 ? "course_row_light" : "course_row_dark"
+                      }`}
+                      key={index}
+                      to={`student?user_id=${item.id}`}
+                    >
+                      <p className="student_row">{item.email}</p>
+                      <img
+                        src={item.profile_image}
+                        alt="Profile Image"
+                        className="student_row"
+                      />
+                      <p className="student_row">{item.profession}</p>
+                      <p className="student_row">{item.dob}</p>
+                      <p className="student_row gender">{item.gender}</p>
+                    </Link>
                   );
                 })}
               </div>

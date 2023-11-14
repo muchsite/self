@@ -11,6 +11,9 @@
   background-position: cover;
   background-size: cover;
   background-color: rgb(250, 167, 73);
+  @include breack_down(medium) {
+    align-items: center;
+  }
   .log_in_header {
     display: flex;
     align-items: center;
@@ -24,6 +27,10 @@
   }
   form {
     width: 30vw;
+    @include breack_down(medium) {
+      width: 90vw;
+      margin: 0;
+    }
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -37,7 +44,12 @@
       width: 100%;
       gap: 5px;
       flex-direction: column;
-
+      position: relative;
+      p {
+        position: absolute;
+        bottom: 0;
+        transform: translateY(100%);
+      }
       input {
         padding: 1rem;
         width: 20vw;
@@ -54,6 +66,9 @@
       }
     }
     .login_btn_container {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
       button {
         padding: 0.7rem 2rem;
         cursor: pointer;

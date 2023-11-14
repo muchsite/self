@@ -4,16 +4,37 @@
     .group_info {
       display: flex;
       justify-content: space-around;
+      @include breack_down(large) {
+        flex-direction: column;
+        align-items: center;
+      }
+      .group_img {
+        @include breack_down(large) {
+          width: 80vw;
+        }
+        @include breack_down(medium) {
+          width: 90vw;
+        }
+      }
       .group_details {
         display: flex;
         flex-direction: column;
         gap: 2rem;
         font-size: 20px;
         width: 50%;
-        color: $dashLime;
+        color: #fff;
+        @include breack_down(large) {
+          // text-align: center;
+          width: 80vw;
+          margin-top: 5rem;
+        }
+        @include breack_down(large) {
+          width: 90vw;
+          margin-top: 2rem;
+          gap: 1rem;
+        }
         span {
-          //   color: #00f69e;
-          margin-left: 5px;
+          color: #b1f7b5;
         }
       }
     }
@@ -23,25 +44,46 @@
   margin: 5rem 0;
   color: #fff;
   padding-left: 2rem;
+  width: 90%;
+  @include breack_down(large) {
+    width: 100%;
+    padding-left: 0;
+  }
   .students_header {
     display: flex;
+    @include breack_down(medium) {
+      display: none !important;
+    }
     p {
       padding: 8px;
-      outline: 1px solid rgb(5, 13, 131);
-      width: 21%;
+      background-color: $tableDark;
+      width: 23%;
     }
   }
   .student_details {
     display: flex;
-    p {
+    text-decoration: none;
+    color: #fff;
+    @include breack_down(medium) {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .student_row {
       padding: 8px;
-      width: 21%;
-      outline: 1px solid rgb(5, 13, 131);
+      width: 23%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      @include breack_down(medium) {
+        width: auto;
+      }
     }
     img {
-      outline: 1px solid rgb(5, 13, 131);
-      padding: 8px;
-      width: 21%;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
     }
   }
 }

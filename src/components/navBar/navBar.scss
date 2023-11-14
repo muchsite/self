@@ -1,8 +1,8 @@
 @use "../../App.scss" as *;
 .fixed {
   position: fixed;
-  background: rgba(255, 255, 255, 0.56);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(207, 199, 186, 0.74);
+  box-shadow: 0 4px 30px rgba(53, 34, 5, 0.363);
   backdrop-filter: blur(11.5px);
   -webkit-backdrop-filter: blur(11.5px);
   padding: 0.3rem 7vw;

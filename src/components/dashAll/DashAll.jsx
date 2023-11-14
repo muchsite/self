@@ -47,7 +47,13 @@ const DashAll = () => {
             </div>
             {data?.map((item, index) => {
               return (
-                <Link key={index} className="couses_row" to={`${item.id}`}>
+                <Link
+                  key={index}
+                  className={`couses_row ${
+                    index % 2 == 0 ? "course_row_light" : "course_row_dark"
+                  }`}
+                  to={`${item.id}`}
+                >
                   <div className="couse_cell">
                     <p>{item.name}</p>
                   </div>

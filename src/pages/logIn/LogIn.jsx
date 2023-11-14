@@ -2,9 +2,17 @@ import React from "react";
 import { useMainContext } from "../../utils/context";
 import logo from "../../images/BlackLogo.png";
 import "./login.scss";
+import Loading from "../../components/loading/Loading";
 const LogIn = () => {
-  const { email, setEmail, password, setPassword, handleSubmit } =
-    useMainContext();
+  const {
+    email,
+    setEmail,
+    password,
+    setPassword,
+    handleSubmit,
+    logInLoading,
+    loginError,
+  } = useMainContext();
 
   return (
     <div className="login_container">
@@ -25,7 +33,7 @@ const LogIn = () => {
         <div className="login_div">
           <label htmlFor="">Password::</label>
           <input
-            type="text"
+            type="password"
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -33,6 +41,8 @@ const LogIn = () => {
         </div>
         <div className="login_btn_container">
           <button type="submit">Log In</button>
+          {logInLoading && <Loading />}
+          {!logInLoading && loginError.length > 0 && <p>{loginError}</p>}
         </div>
       </form>
     </div>

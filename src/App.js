@@ -12,6 +12,7 @@ import LogIn from "./pages/logIn/LogIn";
 import DashOutlet from "./pages/dashOutlet/DashOutlet";
 import { CreateMainContext } from "./utils/context";
 import DashAll from "./components/dashAll/DashAll";
+import DashHomeForAdmin from "./components/dashHome/DashHomeForAdmin";
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,10 @@ function App() {
               <Route path="profile" element={<DashProfile />} />
               <Route path="allgroups" element={<DashAll />} />
               <Route path="allgroups/:groupId" element={<DashGroup />} />
+              <Route
+                path="allgroups/:groupId/student"
+                element={<DashHomeForAdmin />}
+              />
             </Route>
           </Routes>
         </ParallaxProvider>

@@ -12,25 +12,14 @@ const NavBar = () => {
   const location = useLocation();
   const hideNavBar =
     location.pathname.startsWith("/dashboard") && location.pathname !== "/";
-  const [nvFixed, setNavFixed] = useState(false);
   const [open, setOpen] = useState(false);
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      const pos = window.scrollY;
-      if (pos > 400) {
-        setNavFixed(true);
-      }
-      if (pos <= 400) {
-        setNavFixed(false);
-      }
-    });
-  }, []);
+
   if (hideNavBar) {
     return null;
   }
 
   return (
-    <nav className={`${nvFixed && "fixed"}`}>
+    <nav className={`} fixed`}>
       <div className="nav_logo">
         <Link to="/">
           <img src={BlackLogo} alt="" />

@@ -8,12 +8,16 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import ham from "../../images/ham.svg";
 import close from "../../images/close.svg";
+import axios from "axios";
+import { useMainContext } from "../../utils/context";
 const Dash = () => {
   const [activeDash, setActiveDash] = useState("");
   const [openMenu, setOepenMenu] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const { role } = useParams();
+  const { baseURL } = useMainContext();
+
   const handleNavigate = (arg) => {
     if (arg == "home") {
       setActiveDash("home");
@@ -36,10 +40,19 @@ const Dash = () => {
       navigate("allgroups/:NON");
     }
   };
-  const hadleLogOut = () => {
-    localStorage.removeItem("token");
-    localStorage.removeItem("refresh");
-    navigate("/login");
+  const hadleLogOut = async () => {
+    try {
+      const body = { refresh: localStorage.getItem("refresh") };
+      const res = await axios.post(baseURL + "logout/", body);
+      localStorage.removeItem("token");
+      localStorage.removeItem("refresh");
+      navigate("/login");
+    } catch (error) {
+      console.log(error);
+      localStorage.removeItem("token");
+      localStorage.removeItem("refresh");
+      navigate("/login");
+    }
   };
   useEffect(() => {
     setActiveDash(location.pathname.split("/")[4]);
@@ -94,7 +107,7 @@ const Dash = () => {
                 <div
                   onClick={() => handleNavigate("group")}
                   className={`dash_link ${
-                    activeDash == "group" && "active_dash_link"
+                    activeDash == "allgroups" && "active_dash_link"
                   }`}
                 >
                   <MdGroups2 /> GROUP
