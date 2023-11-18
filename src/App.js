@@ -13,11 +13,12 @@ import DashOutlet from "./pages/dashOutlet/DashOutlet";
 import { CreateMainContext } from "./utils/context";
 import DashAll from "./components/dashAll/DashAll";
 import DashHomeForAdmin from "./components/dashHome/DashHomeForAdmin";
+import Terms from "./pages/terms/Terms";
 
 function App() {
   useEffect(() => {
     const lenis = new Lenis({
-      duration: 2,
+      duration: 1,
     });
     lenis.on("scroll", (e) => {});
     function raf(time) {
@@ -35,6 +36,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LogIn />} />
+            <Route path="/privacy" element={<Terms />} />
             <Route path="/dashboard/:role/:id" element={<DashOutlet />}>
               <Route path="home" element={<DashHome />} />
               <Route path="profile" element={<DashProfile />} />

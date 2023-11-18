@@ -19,16 +19,26 @@ $as: #1fa52f;
 $lightGrey: #c0c0c0;
 $darckGrey: #333333;
 $background: #fdf5ed;
-$gr: #7f5e46;
-// dashboard
+$gr: #c47843;
+//
+// global
+//
 $rightBack: #1b1c31;
 $leftBack: #222338;
 $blueBack: #222338;
 $dashLime: #00ffc38e;
 $tableDark: #1d3442;
 $tableLight: #26424f;
-
+//
+// global
+//
+h2 {
+  color: $primary;
+  font-size: 35px;
+}
+//
 // mixins
+//
 $breack-up: (
   "small": "600px",
   "medium": "1164px",

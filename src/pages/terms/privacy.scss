@@ -1,0 +1,36 @@
+.privacy_container {
+  padding: 7rem 2rem;
+  display: flex;
+  gap: 3rem;
+  .privacy_links {
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    top: 7rem;
+    align-self: flex-start; /* <-- this is the fix */
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .privacy_link {
+      cursor: pointer;
+      font-size: 20px;
+      padding: 1rem;
+      transition: 0.2s;
+      &:hover {
+        background-color: rgb(245, 232, 212);
+      }
+    }
+  }
+}
+.privacy_item {
+  margin: 0 0 5rem 0;
+  h2 {
+    margin: 1rem 0;
+    font-size: 30px;
+  }
+}
+.ative_P {
+  //   background-color: red;
+  background-color: rgb(240, 177, 83) !important;
+  color: #fff;
+}

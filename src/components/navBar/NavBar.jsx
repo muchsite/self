@@ -6,6 +6,7 @@ import { AiFillHome } from "react-icons/ai";
 import { GiBookshelf, GiCampfire } from "react-icons/gi";
 import { MdEventNote } from "react-icons/md";
 import { RiContactsBookFill } from "react-icons/ri";
+import { RiGitRepositoryPrivateFill } from "react-icons/ri";
 import { useEffect } from "react";
 import { useState } from "react";
 const NavBar = () => {
@@ -19,7 +20,7 @@ const NavBar = () => {
   }
 
   return (
-    <nav className={`} fixed`}>
+    <nav className={`fixed`}>
       <div className="nav_logo">
         <Link to="/">
           <img src={BlackLogo} alt="" />
@@ -66,6 +67,15 @@ const NavBar = () => {
         >
           <RiContactsBookFill /> CONTACT US
         </NavLink>
+        <NavLink
+          to="/privacy"
+          className={({ isActive }) =>
+            isActive ? "nav_link nav_link_active" : "nav_link"
+          }
+        >
+          <RiGitRepositoryPrivateFill />
+          PRIVACY
+        </NavLink>
       </div>
       <div className={`ham ${open && "open_ham"}`}>
         <NavLink
@@ -102,6 +112,14 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           to="/contact"
+          className={({ isActive }) =>
+            isActive ? "nav_link nav_link_active" : "nav_link"
+          }
+        >
+          <RiContactsBookFill /> CONTACT US
+        </NavLink>
+        <NavLink
+          to="/privacy"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
