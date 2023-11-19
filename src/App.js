@@ -13,7 +13,10 @@ import DashOutlet from "./pages/dashOutlet/DashOutlet";
 import { CreateMainContext } from "./utils/context";
 import DashAll from "./components/dashAll/DashAll";
 import DashHomeForAdmin from "./components/dashHome/DashHomeForAdmin";
-import Terms from "./pages/terms/Terms";
+import Privacy from "./pages/terms/Privacy";
+import Conditions from "./pages/terms/Conditions";
+import Refund from "./pages/terms/Refund";
+import Footer from "./components/footer/Footer";
 
 function App() {
   useEffect(() => {
@@ -36,7 +39,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/login" element={<LogIn />} />
-            <Route path="/privacy" element={<Terms />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Conditions />} />
+            <Route path="/refund" element={<Refund />} />
             <Route path="/dashboard/:role/:id" element={<DashOutlet />}>
               <Route path="home" element={<DashHome />} />
               <Route path="profile" element={<DashProfile />} />
@@ -48,6 +53,7 @@ function App() {
               />
             </Route>
           </Routes>
+          <Footer />
         </ParallaxProvider>
       </CreateMainContext>
     </BrowserRouter>

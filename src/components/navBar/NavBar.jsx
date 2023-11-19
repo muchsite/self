@@ -67,15 +67,6 @@ const NavBar = () => {
         >
           <RiContactsBookFill /> CONTACT US
         </NavLink>
-        <NavLink
-          to="/privacy"
-          className={({ isActive }) =>
-            isActive ? "nav_link nav_link_active" : "nav_link"
-          }
-        >
-          <RiGitRepositoryPrivateFill />
-          PRIVACY
-        </NavLink>
       </div>
       <div className={`ham ${open && "open_ham"}`}>
         <NavLink
@@ -112,14 +103,6 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           to="/contact"
-          className={({ isActive }) =>
-            isActive ? "nav_link nav_link_active" : "nav_link"
-          }
-        >
-          <RiContactsBookFill /> CONTACT US
-        </NavLink>
-        <NavLink
-          to="/privacy"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
