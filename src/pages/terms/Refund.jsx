@@ -15,7 +15,7 @@ const Refund = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `${"https://growklasdklfjkl.co.in" + "/otherpages"}`
+          `${"https://euijkladsfiuoqew.in/api/otherpages/"}`
         );
         const p = DOMPurify.sanitize(res.data[0].privacy_policies);
         setprivacy_policies(p);
