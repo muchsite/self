@@ -30,13 +30,7 @@ $blueBack: #222338;
 $dashLime: #00ffc38e;
 $tableDark: #1d3442;
 $tableLight: #26424f;
-//
-// global
-//
-h2 {
-  color: $primary;
-  font-size: 35px;
-}
+
 //
 // mixins
 //
@@ -67,4 +61,14 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+//
+// global
+//
+h2 {
+  color: $primary;
+  font-size: 35px;
+  @include breack_down(medium) {
+    font-size: 20px;
+  }
 }

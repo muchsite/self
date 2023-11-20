@@ -5,6 +5,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @include breack_down(medium) {
+    padding: 3rem 1rem;
+  }
   .test_contetnt {
     background-color: #fff;
     box-shadow: 0px 0px 100px #e0d7b8;
@@ -15,17 +18,28 @@
     display: flex;
     overflow: hidden;
     justify-content: space-between;
+    @include breack_down(medium) {
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 3rem;
+      min-height: 40rem;
+      width: 95vw;
+    }
+
     .test_title {
       display: flex;
       justify-content: space-between;
       flex-direction: column;
       h2 {
-        color: 5e6282;
+        color: #5e6282;
         font-size: 18px;
       }
       h3 {
         font-size: 50px;
         color: #14183e;
+        @include breack_down(medium) {
+          font-size: 30px;
+        }
       }
       .test_buttons {
         display: flex;
@@ -46,8 +60,14 @@
       margin-top: 1rem;
       width: 50%;
       position: relative;
+      @include breack_down(medium) {
+        width: 100%;
+      }
       .test_item {
         width: 30vw;
+        @include breack_down(medium) {
+          width: 80vw;
+        }
         background-color: #f4ece5;
         border-radius: 10px;
         margin-bottom: 2rem;
@@ -75,8 +95,8 @@
       }
 
       .pre {
-        top: -20rem;
-        left: -20rem;
+        top: -49rem;
+        left: -49rem;
       }
       .current {
         top: 0;

@@ -2,6 +2,9 @@
 .courses_container {
   // height: 200vh;
   margin: 7rem 0;
+  @include breack_down(medium) {
+    margin: 5rem 0;
+  }
   width: 100%;
   text-align: center;
 }
@@ -11,10 +14,22 @@
   justify-content: center;
   gap: 3rem;
   position: relative;
+  @include breack_down(medium) {
+    margin-top: 2rem;
+  }
   .courses_items_container {
     display: flex;
     gap: 3rem;
     justify-content: center;
+    @include breack_down(medium) {
+      flex-direction: column;
+      gap: 2rem;
+    }
+    .course_item_parallax {
+      @include breack_down(medium) {
+        transform: translateY(0) !important;
+      }
+    }
     .courses_item {
       box-shadow: 0px 0px 38px #240d00;
       position: relative;
@@ -22,6 +37,10 @@
       cursor: pointer;
       width: 27vw;
       height: 40rem;
+      @include breack_down(medium) {
+        width: 90vw;
+        height: 35rem;
+      }
       img {
         width: 100%;
         height: 100%;
@@ -66,6 +85,27 @@
         align-items: center;
         justify-content: center;
         top: 100%;
+        @include breack_down(medium) {
+          display: none !important;
+        }
+        h4 {
+          color: #fff;
+        }
+      }
+
+      .course_info_mobile {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(88, 68, 23, 0.664);
+        backdrop-filter: blur(15.1px);
+        -webkit-backdrop-filter: blur(15.1px);
+        transition: 0.5s;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        top: 100%;
         h4 {
           color: #fff;
         }
@@ -84,4 +124,79 @@
   background-color: $gr;
   top: 50%;
   transform: translateY(-50%);
+}
+
+// plus
+.course_btn_container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.closed {
+  .vertical {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(-90deg);
+  }
+  .horizontal {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(-90deg);
+    opacity: 1;
+  }
+}
+
+.opened {
+  opacity: 1;
+  .vertical {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(90deg);
+  }
+  .horizontal {
+    transition: all 0.5s ease-in-out;
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+}
+
+.circle-plus {
+  height: 4em;
+  width: 4em;
+  font-size: 1em;
+  opacity: 0.7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-plus .circle {
+  position: relative;
+  width: 2.55em;
+  height: 2.5em;
+  border-radius: 10px;
+  background-color: #240d00;
+}
+.circle-plus .circle .horizontal {
+  position: absolute;
+  background-color: $primary;
+  width: 30px;
+  height: 5px;
+  left: 50%;
+  margin-left: -15px;
+  top: 50%;
+  margin-top: -2.5px;
+  order-radius: 10px;
+}
+.circle-plus .circle .vertical {
+  position: absolute;
+  background-color: $primary;
+  width: 5px;
+  height: 30px;
+  left: 50%;
+  margin-left: -2.5px;
+  top: 50%;
+  margin-top: -15px;
+  order-radius: 10px;
 }

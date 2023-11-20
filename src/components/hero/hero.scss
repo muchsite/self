@@ -12,6 +12,10 @@
   inset: inherit !important;
   bottom: 0 !important;
   right: 0 !important;
+  @include breack_down(medium) {
+    height: 50%;
+    width: 70%;
+  }
 }
 .hero_content {
   display: flex;
@@ -22,17 +26,34 @@
   margin-top: 22vh;
   margin-left: 7vw;
   width: 40vw;
+  @include breack_down(medium) {
+    width: 100%;
+    margin-left: 0;
+    align-items: center;
+  }
   h1 {
     font-size: 60px;
     color: $primary;
+    @include breack_down(medium) {
+      font-size: 40px;
+      text-align: center;
+    }
   }
   p {
     font-size: 23.44px;
     color: $darckGrey;
+    @include breack_down(medium) {
+      font-size: 20px;
+      text-align: center;
+    }
   }
   button {
     width: fit-content;
     padding: 0.5rem 1.3rem;
+    @include breack_down(medium) {
+      padding: 0.4rem 1rem;
+      font-size: 16px;
+    }
     font-size: 18px;
     background-color: $primary;
     color: #fff;

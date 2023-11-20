@@ -2,9 +2,10 @@ import axios from "axios";
 import DOMPurify from "dompurify";
 import React, { useState, useEffect } from "react";
 import Loading from "../../components/loading/Loading";
-
+import { useMainContext } from "../../utils/context";
 import "./privacy.scss";
 const Conditions = () => {
+  const {} = useMainContext();
   const [privacy_policies, setprivacy_policies] = useState({});
   const [refund, setrefund] = useState({});
   const [terms_and_conditions, setterms_and_conditions] = useState({});
