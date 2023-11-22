@@ -27,7 +27,8 @@ nav {
   }
   .nav_links {
     display: flex;
-    gap: 2.2rem;
+    gap: 1.2rem;
+
     @include breack_down(large) {
       display: none !important;
     }
@@ -60,7 +61,7 @@ nav {
 .nav_link {
   color: #000;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   display: flex;
   align-items: center;

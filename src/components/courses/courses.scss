@@ -1,6 +1,14 @@
 @use "../../App.scss" as *;
 .courses_container {
   // height: 200vh;
+  h2 {
+    color: $primary;
+    font-size: 35px;
+    @include breack_down(medium) {
+      font-size: 20px;
+    }
+  }
+
   margin: 7rem 0;
   @include breack_down(medium) {
     margin: 5rem 0;
@@ -85,7 +93,7 @@
         align-items: center;
         justify-content: center;
         top: 100%;
-        @include breack_down(medium) {
+        @include breack_down(large) {
           display: none !important;
         }
         h4 {
@@ -106,6 +114,9 @@
         align-items: center;
         justify-content: center;
         top: 100%;
+        @include breack_up(medium) {
+          display: none !important;
+        }
         h4 {
           color: #fff;
         }
@@ -135,6 +146,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @include breack_up(medium) {
+    display: none !important;
+  }
 }
 .closed {
   .vertical {

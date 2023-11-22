@@ -7,6 +7,7 @@ import { GiBookshelf, GiCampfire } from "react-icons/gi";
 import { MdEventNote } from "react-icons/md";
 import { RiContactsBookFill } from "react-icons/ri";
 import { RiGitRepositoryPrivateFill } from "react-icons/ri";
+import { BsFillInfoSquareFill } from "react-icons/bs";
 import { useEffect } from "react";
 import { useState } from "react";
 const NavBar = () => {
@@ -67,10 +68,20 @@ const NavBar = () => {
         >
           <RiContactsBookFill /> CONTACT US
         </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) =>
+            isActive ? "nav_link nav_link_active" : "nav_link"
+          }
+        >
+          <BsFillInfoSquareFill />
+          ABOUT US
+        </NavLink>
       </div>
       <div className={`ham ${open && "open_ham"}`}>
         <NavLink
           to="/"
+          onClick={() => setOpen(false)}
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
@@ -78,6 +89,7 @@ const NavBar = () => {
           <AiFillHome /> Home
         </NavLink>
         <NavLink
+          onClick={() => setOpen(false)}
           to="/courses"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
@@ -87,6 +99,7 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           to="/events"
+          onClick={() => setOpen(false)}
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
@@ -94,6 +107,7 @@ const NavBar = () => {
           <MdEventNote /> EVENTS
         </NavLink>
         <NavLink
+          onClick={() => setOpen(false)}
           to="/camps"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
@@ -103,11 +117,22 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           to="/contact"
+          onClick={() => setOpen(false)}
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
         >
           <RiContactsBookFill /> CONTACT US
+        </NavLink>
+        <NavLink
+          to="/about"
+          onClick={() => setOpen(false)}
+          className={({ isActive }) =>
+            isActive ? "nav_link nav_link_active" : "nav_link"
+          }
+        >
+          <BsFillInfoSquareFill />
+          ABOUT US
         </NavLink>
       </div>
 

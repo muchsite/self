@@ -17,6 +17,7 @@ import Privacy from "./pages/terms/Privacy";
 import Conditions from "./pages/terms/Conditions";
 import Refund from "./pages/terms/Refund";
 import Footer from "./components/footer/Footer";
+import About from "./pages/about/About";
 
 function App() {
   useEffect(() => {
@@ -42,6 +43,7 @@ function App() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Conditions />} />
             <Route path="/refund" element={<Refund />} />
+            <Route path="/about" element={<About />} />
             <Route path="/dashboard/:role/:id" element={<DashOutlet />}>
               <Route path="home" element={<DashHome />} />
               <Route path="profile" element={<DashProfile />} />

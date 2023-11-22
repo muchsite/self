@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat+Subrayada:wght@700&family=Montserrat:wght@400;500;600;700&family=Roboto:wght@900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;0,800;1,700;1,800&display=swap");
 * {
   margin: 0;
   padding: 0;
@@ -65,10 +66,3 @@ input[type="number"] {
 //
 // global
 //
-h2 {
-  color: $primary;
-  font-size: 35px;
-  @include breack_down(medium) {
-    font-size: 20px;
-  }
-}
