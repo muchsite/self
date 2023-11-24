@@ -18,6 +18,8 @@ import Conditions from "./pages/terms/Conditions";
 import Refund from "./pages/terms/Refund";
 import Footer from "./components/footer/Footer";
 import About from "./pages/about/About";
+import CoursesAll from "./pages/courses/CoursesAll";
+import EventsAll from "./pages/events/EventsAll";
 
 function App() {
   useEffect(() => {
@@ -39,6 +41,8 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/courses" element={<CoursesAll />} />
+            <Route path="/events" element={<EventsAll />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Conditions />} />

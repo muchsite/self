@@ -79,6 +79,10 @@
             position: absolute;
             top: 0;
             left: 0;
+            width: 5rem;
+            height: 5rem;
+            border-radius: 50%;
+            object-fit: cover;
             transform: translate(-50%, -50%);
           }
           .test_info {

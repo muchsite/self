@@ -1,7 +1,7 @@
 @use "../../App.scss" as *;
 .courses_container {
   // height: 200vh;
-  h2 {
+  .course_titel {
     color: $primary;
     font-size: 35px;
     @include breack_down(medium) {
@@ -27,7 +27,7 @@
   }
   .courses_items_container {
     display: flex;
-    gap: 3rem;
+    gap: 2rem;
     justify-content: center;
     @include breack_down(medium) {
       flex-direction: column;
@@ -42,9 +42,8 @@
       box-shadow: 0px 0px 38px #240d00;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
-      width: 27vw;
-      height: 40rem;
+      width: 30vw;
+      height: 70vh;
       @include breack_down(medium) {
         width: 90vw;
         height: 35rem;
@@ -92,12 +91,24 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 2rem;
         top: 100%;
+        color: #fff;
+        .learn_more {
+          text-decoration: none;
+          color: #fff;
+          background-color: $primary;
+          padding: 0.4rem 1rem;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            color: $primary;
+            background-color: #fff;
+          }
+        }
         @include breack_down(large) {
           display: none !important;
-        }
-        h4 {
-          color: #fff;
         }
       }
 
@@ -113,12 +124,25 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        gap: 2rem;
+        color: #fff;
         top: 100%;
         @include breack_up(medium) {
           display: none !important;
         }
-        h4 {
+
+        .learn_more {
+          text-decoration: none;
           color: #fff;
+          background-color: $primary;
+          padding: 0.4rem 1rem;
+          border-radius: 4px;
+          cursor: pointer;
+          transition: 0.3s;
+          &:hover {
+            color: $primary;
+            background-color: #fff;
+          }
         }
       }
       .top_0 {

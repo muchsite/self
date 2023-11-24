@@ -1,12 +1,10 @@
 import React from "react";
 import "./courses.scss";
-import c1 from "../../images/c1.jpg";
-import c2 from "../../images/c2.jpg";
-import c3 from "../../images/c3.jpg";
+
 import { Parallax } from "react-scroll-parallax";
 import { useState } from "react";
-
-const Courses = () => {
+import { Link } from "react-router-dom";
+const Courses = ({ courses }) => {
   const [hover, setHover] = useState(null);
   const [click, setClick] = useState(null);
   const handleClick = (index) => {
@@ -16,99 +14,80 @@ const Courses = () => {
       setClick(null);
     }
   };
+
   return (
     <section className="courses_container">
-      <h2>COURSES</h2>
+      <h2 className="course_titel">COURSES</h2>
       <div className="courses_content">
         <div className="course_background"></div>
         <div className="courses_items_container">
-          <Parallax speed={20} className="course_item_parallax">
-            <div
-              className="courses_item"
-              onMouseEnter={() => setHover(0)}
-              onMouseLeave={() => setHover(null)}
-            >
-              <img src={c1} alt="" />
-              <div className="courses_item_title">
-                <h3>Course Titel 1</h3>
-              </div>
-              <div className={`course_info ${hover === 0 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-              <div
-                className="course_btn_container"
-                onClick={() => handleClick(0)}
+          {courses?.map((item, index) => {
+            return (
+              <Parallax
+                className="course_item_parallax"
+                speed={index == 0 ? 20 : index == 1 ? 35 : 10}
+                key={index}
               >
-                <div className={`circle-plus closed ${click == 0 && "opened"}`}>
-                  <div className="circle">
-                    <div className="horizontal"></div>
-                    <div className="vertical"></div>
+                <div
+                  className="courses_item"
+                  onMouseEnter={() => setHover(index)}
+                  onMouseLeave={() => setHover(null)}
+                >
+                  <img src={item.c_img} alt="" />
+                  <div
+                    className={`${
+                      index == 1 ? "courses_item_title_2" : "courses_item_title"
+                    }`}
+                  >
+                    <h3>{item.c_title}</h3>
+                  </div>
+                  <div className={`course_info ${hover === index && "top_0"}`}>
+                    <h4>{item.c_title}</h4>
+                    <p>
+                      Facilitator:
+                      <span> {item.facilitator}</span>
+                    </p>
+                    <p>
+                      Price:
+                      <span> {item.cost} $</span>
+                    </p>
+                    <Link className="learn_more">Learn More!</Link>
+                  </div>
+                  <div
+                    className="course_btn_container"
+                    onClick={() => handleClick(index)}
+                  >
+                    <div
+                      className={`circle-plus closed ${
+                        click == index && "opened"
+                      }`}
+                    >
+                      <div className="circle">
+                        <div className="horizontal"></div>
+                        <div className="vertical"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div
+                    className={`course_info_mobile ${
+                      click === index && "top_0"
+                    }`}
+                  >
+                    <h4>{item.c_title}</h4>
+                    <p>
+                      Facilitator:
+                      <span> {item.facilitator}</span>
+                    </p>
+                    <p>
+                      Price:
+                      <span> {item.cost} $</span>
+                    </p>
+                    <Link className="learn_more">Learn More!</Link>
                   </div>
                 </div>
-              </div>
-              <div className={`course_info_mobile ${click === 0 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-            </div>
-          </Parallax>
-          <Parallax speed={35} className="course_item_parallax">
-            <div
-              className="courses_item"
-              onMouseEnter={() => setHover(1)}
-              onMouseLeave={() => setHover(null)}
-            >
-              <img src={c2} alt="" />
-              <div className="courses_item_title_2">
-                <h3>Course Titel 1</h3>
-              </div>
-              <div className={`course_info ${hover === 1 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-              <div
-                className="course_btn_container"
-                onClick={() => handleClick(1)}
-              >
-                <div className={`circle-plus closed ${click == 1 && "opened"}`}>
-                  <div className="circle">
-                    <div className="horizontal"></div>
-                    <div className="vertical"></div>
-                  </div>
-                </div>
-              </div>
-              <div className={`course_info_mobile ${click === 1 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-            </div>
-          </Parallax>
-          <Parallax speed={10} className="course_item_parallax">
-            <div
-              className="courses_item"
-              onMouseEnter={() => setHover(2)}
-              onMouseLeave={() => setHover(null)}
-            >
-              <img src={c3} alt="" />
-              <div className="courses_item_title">
-                <h3>Course Titel 1</h3>
-              </div>
-              <div className={`course_info ${hover === 2 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-              <div
-                className="course_btn_container"
-                onClick={() => handleClick(2)}
-              >
-                <div className={`circle-plus closed ${click == 2 && "opened"}`}>
-                  <div className="circle">
-                    <div className="horizontal"></div>
-                    <div className="vertical"></div>
-                  </div>
-                </div>
-              </div>
-              <div className={`course_info_mobile ${click === 2 && "top_0"}`}>
-                <h4>course title</h4>
-              </div>
-            </div>
-          </Parallax>
+              </Parallax>
+            );
+          })}
         </div>
       </div>
     </section>

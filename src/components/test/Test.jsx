@@ -1,28 +1,9 @@
 import React, { useState } from "react";
 import "./test.scss";
-import image from "../../images/pr.png";
-const Test = () => {
+
+const Test = ({ testimonials }) => {
   const [count, setCount] = useState(0);
-  const test = [
-    {
-      image,
-      desc: "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
-      name: "Mike taylor",
-      prof: "Teacher",
-    },
-    {
-      image,
-      desc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ea aspernatur itaque aliquid nam incidunt cupiditate nemo perferendis veritatis ipsum ratione, repudiandae saepe minus at iusto corporis natus? Magnam, neque hic!",
-      name: "Jhon Dow",
-      prof: "Proffesor",
-    },
-    {
-      image,
-      desc: "“On the Windows talking painted pasture yet its express parties use. Sure last upon he same as knew next. Of believed or diverted no.”",
-      name: "Asdf Dadfasd",
-      prof: "asdfasdf",
-    },
-  ];
+
   return (
     <section className="test_container">
       <div className="test_contetnt">
@@ -49,7 +30,7 @@ const Test = () => {
           </div>
         </div>
         <div className="test_items">
-          {test.map((item, index) => {
+          {testimonials?.slice(0, 3).map((item, index) => {
             return (
               <div
                 className={`test_item ${
@@ -67,10 +48,10 @@ const Test = () => {
                 <div className="test_item_realtive">
                   <img src={item.image} alt="" />
                   <div className="test_info">
-                    <p>{item.desc}</p>
+                    <p>{item.testimonial}</p>
                     <div>
-                      <h4>{item.name}</h4>
-                      <h5>{item.prof}</h5>
+                      <h4>Name: {item.name}</h4>
+                      <h5>Profession: {item.profession}</h5>
                     </div>
                   </div>
                 </div>
