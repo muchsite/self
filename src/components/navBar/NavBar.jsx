@@ -53,12 +53,12 @@ const NavBar = () => {
           <MdEventNote /> EVENTS
         </NavLink>
         <NavLink
-          to="/camps"
+          to="/retreat"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
         >
-          <GiCampfire /> CAMPS
+          <GiCampfire /> RETREAT
         </NavLink>
         <NavLink
           to="/contact"
@@ -108,12 +108,12 @@ const NavBar = () => {
         </NavLink>
         <NavLink
           onClick={() => setOpen(false)}
-          to="/camps"
+          to="/retreat"
           className={({ isActive }) =>
             isActive ? "nav_link nav_link_active" : "nav_link"
           }
         >
-          <GiCampfire /> CAMPS
+          <GiCampfire /> RETREAT
         </NavLink>
         <NavLink
           to="/contact"

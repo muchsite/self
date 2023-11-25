@@ -23,7 +23,15 @@ const CoursesAll = () => {
     fetchData();
   }, []);
   const [hover, setHover] = useState(null);
+  const [click, setClick] = useState(null);
   const [active, setActive] = useState(true);
+  const handleClick = (index) => {
+    if (index !== click) {
+      setClick(index);
+    } else {
+      setClick(null);
+    }
+  };
 
   return (
     <>
@@ -37,13 +45,13 @@ const CoursesAll = () => {
               onClick={() => setActive(true)}
               className={`${active ? "ar_btn_active" : ""}`}
             >
-              ATIVE
+              ACTIVE
             </button>
             <button
               onClick={() => setActive(false)}
               className={`${!active ? "ar_btn_active" : ""}`}
             >
-              ARVHIVE
+              ARCHIVED
             </button>
           </div>
           <div className="a_c_contetn">
@@ -80,6 +88,37 @@ const CoursesAll = () => {
                         </p>
                         <Link className="learn_more">Learn More!</Link>
                       </div>
+                      <div
+                        className="course_btn_container"
+                        onClick={() => handleClick(index)}
+                      >
+                        <div
+                          className={`circle-plus closed ${
+                            click == index && "opened"
+                          }`}
+                        >
+                          <div className="circle">
+                            <div className="horizontal"></div>
+                            <div className="vertical"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className={`course_info_mobile ${
+                          click === index && "top_0"
+                        }`}
+                      >
+                        <h4>{item.c_title}</h4>
+                        <p>
+                          Facilitator:
+                          <span> {item.facilitator}</span>
+                        </p>
+                        <p>
+                          Price:
+                          <span> {item.cost} $</span>
+                        </p>
+                        <Link className="learn_more">Learn More!</Link>
+                      </div>
                     </div>
                   );
                 })
@@ -103,6 +142,37 @@ const CoursesAll = () => {
                       </div>
                       <div
                         className={`course_info ${hover === index && "top_0"}`}
+                      >
+                        <h4>{item.c_title}</h4>
+                        <p>
+                          Facilitator:
+                          <span> {item.facilitator}</span>
+                        </p>
+                        <p>
+                          Price:
+                          <span> {item.cost} $</span>
+                        </p>
+                        <Link className="learn_more">Learn More!</Link>
+                      </div>
+                      <div
+                        className="course_btn_container"
+                        onClick={() => handleClick(index)}
+                      >
+                        <div
+                          className={`circle-plus closed ${
+                            click == index && "opened"
+                          }`}
+                        >
+                          <div className="circle">
+                            <div className="horizontal"></div>
+                            <div className="vertical"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        className={`course_info_mobile ${
+                          click === index && "top_0"
+                        }`}
                       >
                         <h4>{item.c_title}</h4>
                         <p>

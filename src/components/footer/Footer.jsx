@@ -23,8 +23,7 @@ const Footer = () => {
       <img src={logo} className="footer_logo" alt="" />
       <div className="footer_info">
         <p>
-          Address: Iskcon Padyatra Press, A-5, Maharaja Agrasen Marg, Opposite
-          Opposite NTPC office, Block A, Sector 33, Noida, Uttar Pradesh 201301
+          Address: ISKCON, A-5, Block A, Sector 33, Noida, Uttar Pradesh 201301
         </p>
         <p>Contact: +91 98705 90151</p>
         <p>Email : contact.selfcareschool@gmail.com</p>
@@ -35,6 +34,7 @@ const Footer = () => {
         <Link to="/events">Events</Link>
         <Link to="/camps">Camps</Link>
         <Link to="/contact">Contact Us</Link>
+        <Link to="/about">ABOUT Us</Link>
         <Link to="/privacy">Privacy Policy</Link>
         <Link to="/terms">Terms And Conditions </Link>
         <Link to="/refund">Refund Policy</Link>
