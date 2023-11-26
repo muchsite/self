@@ -20,6 +20,8 @@ import Footer from "./components/footer/Footer";
 import About from "./pages/about/About";
 import CoursesAll from "./pages/courses/CoursesAll";
 import EventsAll from "./pages/events/EventsAll";
+import RetreatAll from "./pages/retreat/RetreatAll";
+import Contact from "./pages/contact/Contact";
 
 function App() {
   useEffect(() => {
@@ -43,6 +45,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CoursesAll />} />
             <Route path="/events" element={<EventsAll />} />
+            <Route path="/retreat" element={<RetreatAll />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<LogIn />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Conditions />} />
