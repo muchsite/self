@@ -84,9 +84,15 @@ const CoursesAll = () => {
                         </p>
                         <p>
                           Price:
-                          <span> {item.cost} $</span>
+                          {item.cost > 0 ? (
+                            <span> {item.cost} $</span>
+                          ) : (
+                            <span> Free!</span>
+                          )}
                         </p>
-                        <Link className="learn_more">Learn More!</Link>
+                        <Link className="learn_more" to={`${item.slug}`}>
+                          Learn More!
+                        </Link>
                       </div>
                       <div
                         className="course_btn_container"
@@ -115,9 +121,15 @@ const CoursesAll = () => {
                         </p>
                         <p>
                           Price:
-                          <span> {item.cost} $</span>
+                          {item.cost > 0 ? (
+                            <span> {item.cost} $</span>
+                          ) : (
+                            <span> Free!</span>
+                          )}
                         </p>
-                        <Link className="learn_more">Learn More!</Link>
+                        <Link className="learn_more" to={`${item.slug}`}>
+                          Learn More!
+                        </Link>
                       </div>
                     </div>
                   );
@@ -150,9 +162,15 @@ const CoursesAll = () => {
                         </p>
                         <p>
                           Price:
-                          <span> {item.cost} $</span>
+                          {item.cost > 0 ? (
+                            <span> {item.cost} $</span>
+                          ) : (
+                            <span> Free!</span>
+                          )}
                         </p>
-                        <Link className="learn_more">Learn More!</Link>
+                        <Link className="learn_more" to={`${item.slug}`}>
+                          Learn More!
+                        </Link>
                       </div>
                       <div
                         className="course_btn_container"
@@ -181,9 +199,15 @@ const CoursesAll = () => {
                         </p>
                         <p>
                           Price:
-                          <span> {item.cost} $</span>
+                          {item.cost > 0 ? (
+                            <span> {item.cost} $</span>
+                          ) : (
+                            <span> Free!</span>
+                          )}
                         </p>
-                        <Link className="learn_more">Learn More!</Link>
+                        <Link className="learn_more" to={`${item.slug}`}>
+                          Learn More!
+                        </Link>
                       </div>
                     </div>
                   );

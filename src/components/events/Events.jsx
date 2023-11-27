@@ -1,6 +1,8 @@
 import React from "react";
 import "./event.scss";
+import { useMainContext } from "../../utils/context";
 const Events = ({ events }) => {
+  const { convertTime } = useMainContext();
   return (
     <div className="events_container">
       <h2>Events</h2>
@@ -16,7 +18,7 @@ const Events = ({ events }) => {
                 <div className="event_info">
                   <h3>{item.event}</h3>
                   <p>{item.cost}</p>
-                  <p>{item.date_time}</p>
+                  <p>{convertTime(item.date_time).all}</p>
                   <button>Get Started</button>
                 </div>
               </div>

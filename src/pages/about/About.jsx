@@ -25,7 +25,7 @@ const About = () => {
     };
     fetch();
   }, []);
-
+  console.log(data);
   return (
     <>
       {loading ? (
@@ -33,7 +33,7 @@ const About = () => {
       ) : (
         <div className="about_container">
           <div className="about_item_container item_about">
-            <img src={ab} alt="" className="about_back" />
+            <img src={data[0]?.section_image} alt="" className="about_back" />
             <div className="about_info">
               <h2 className="about_title">{data[0]?.section_heading}</h2>
               <div
@@ -43,7 +43,7 @@ const About = () => {
             </div>
           </div>
           <div className="about_item_container item_mission">
-            <img src={ab} alt="" />
+            <img src={data[1]?.section_image} alt="" />
             <div className="mission_info">
               <h2>{data[1]?.section_heading}</h2>
               <div
@@ -67,7 +67,7 @@ const About = () => {
             </div>
           </div>
           <div className="about_item_container item_ambition_container">
-            <img src={ab} alt="" />
+            <img src={data[4]?.section_image} alt="" />
             <div className="about_item">
               <h2>{data[4]?.section_heading}</h2>
               <div

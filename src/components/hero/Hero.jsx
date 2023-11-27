@@ -4,6 +4,7 @@ import m from "../../images/m.png";
 import man from "../../images/man.png";
 import over from "../../images/over.png";
 import "./hero.scss";
+import { Link } from "react-router-dom";
 const Hero = () => {
   return (
     <section className="hero_container">
@@ -17,7 +18,7 @@ const Hero = () => {
             industry. Lorem Ipsum has been the industry's standard dummy text
             ever since the.
           </p>
-          <button>Call to action</button>
+          <Link to="/login">JOIN US</Link>
         </div>
         <ParallaxBannerLayer speed={10}>
           <img

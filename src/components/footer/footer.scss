@@ -47,7 +47,10 @@
   .footer_social {
     display: flex;
     gap: 1rem;
+    text-decoration: none;
+    color: #fff;
     svg {
+      color: #fff;
       width: 2rem;
       height: 2rem;
       cursor: pointer;

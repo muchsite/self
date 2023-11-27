@@ -4,7 +4,7 @@ import axios from "axios";
 import LoadnigMain from "../../components/loading/LoadnigMain";
 import "./events.scss";
 const EventsAll = () => {
-  const { baseURL } = useMainContext();
+  const { baseURL, convertTime } = useMainContext();
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
   useEffect(() => {
@@ -22,7 +22,7 @@ const EventsAll = () => {
     fetchData();
   }, []);
   const [active, setActive] = useState(true);
-  console.log(data);
+
   return (
     <>
       {loading ? (
@@ -59,7 +59,7 @@ const EventsAll = () => {
                           Addresss: <span>{item.addresss}</span>
                         </p>
                         <p>
-                          Time: <span>{item.date_time}</span>
+                          Time: <span>{convertTime(item.date_time).all}</span>
                         </p>
                         <p>
                           Cost: <span>{item.cost}$</span>

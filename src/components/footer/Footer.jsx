@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "../../images/WhiteLogo.png";
 import "./footer.scss";
-import {
-  FaFacebookSquare,
-  FaInstagramSquare,
-  FaLinkedinIn,
-} from "react-icons/fa";
+import { FaFacebookSquare, FaInstagramSquare, FaYoutube } from "react-icons/fa";
 import { IoMdMail } from "react-icons/io";
 import { FaPhoneAlt, FaHome } from "react-icons/fa";
 
@@ -41,17 +37,29 @@ const Footer = () => {
         <Link to="/">Home</Link>
         <Link to="/courses">Courses</Link>
         <Link to="/events">Events</Link>
-        <Link to="/camps">Camps</Link>
+        <Link to="/camps">Retreat</Link>
         <Link to="/contact">Contact Us</Link>
-        <Link to="/about">ABOUT Us</Link>
+        <Link to="/about">About us</Link>
         <Link to="/privacy">Privacy Policy</Link>
         <Link to="/terms">Terms And Conditions </Link>
         <Link to="/refund">Refund Policy</Link>
       </div>
       <div className="footer_social">
-        <FaFacebookSquare />
-        <FaInstagramSquare />
-        <FaLinkedinIn />
+        <a href="https://www.facebook.com/pvd.LNS/" target="_blank">
+          <FaFacebookSquare />
+        </a>
+        <a
+          href="https://www.instagram.com/pundarikavidyanidhidas/"
+          target="_blank"
+        >
+          <FaInstagramSquare />
+        </a>
+        <a
+          href="https://www.youtube.com/@pundarika_vidyanidhi_das"
+          target="_blank"
+        >
+          <FaYoutube />
+        </a>
       </div>
     </div>
   );

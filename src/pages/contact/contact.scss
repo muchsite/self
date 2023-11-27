@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 3rem;
   align-items: center;
+  min-height: 80vh;
   .contact_title {
     font-size: 40px;
     color: $primary;
@@ -61,13 +62,25 @@
     form {
       display: flex;
       flex-direction: column;
-      gap: 2rem;
+      gap: 2.5rem;
       input,
       textarea {
         padding: 0.7rem;
         border-radius: 5px;
         border: none;
-        outline: 1px solid $second;
+        outline: 1px solid $primary;
+      }
+      .relative_contact {
+        position: relative;
+        .error_contact {
+          position: absolute;
+          margin-top: 5px;
+          color: $second;
+        }
+      }
+      .outline_red {
+        outline: 2px solid $second;
+        border-radius: 5px;
       }
       .contact_name_mail {
         display: flex;
@@ -85,7 +98,6 @@
       }
     }
     button {
-      padding: 1rem 0;
       background-color: $second;
       color: #fff;
       border: none;
@@ -93,6 +105,7 @@
       border-radius: 5px;
       outline: 1px solid $second;
       transition: 0.5s;
+      height: 3rem;
       &:hover {
         background-color: #fff;
         color: $second;

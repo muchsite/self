@@ -49,7 +49,11 @@ const Courses = ({ courses }) => {
                     </p>
                     <p>
                       Price:
-                      <span> {item.cost} $</span>
+                      {item.cost > 0 ? (
+                        <span> {item.cost} $</span>
+                      ) : (
+                        <span> Free!</span>
+                      )}
                     </p>
                     <Link className="learn_more">Learn More!</Link>
                   </div>
@@ -80,7 +84,11 @@ const Courses = ({ courses }) => {
                     </p>
                     <p>
                       Price:
-                      <span> {item.cost} $</span>
+                      {item.cost > 0 ? (
+                        <span> {item.cost} $</span>
+                      ) : (
+                        <span> Free!</span>
+                      )}
                     </p>
                     <Link className="learn_more">Learn More!</Link>
                   </div>

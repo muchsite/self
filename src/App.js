@@ -22,6 +22,7 @@ import CoursesAll from "./pages/courses/CoursesAll";
 import EventsAll from "./pages/events/EventsAll";
 import RetreatAll from "./pages/retreat/RetreatAll";
 import Contact from "./pages/contact/Contact";
+import CourseOne from "./pages/courses/CourseOne";
 
 function App() {
   useEffect(() => {
@@ -44,6 +45,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/courses" element={<CoursesAll />} />
+            <Route path="/courses/:courseID" element={<CourseOne />} />
             <Route path="/events" element={<EventsAll />} />
             <Route path="/retreat" element={<RetreatAll />} />
             <Route path="/contact" element={<Contact />} />

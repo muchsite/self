@@ -84,7 +84,25 @@ export const CreateMainContext = ({ children }) => {
       console.log(error);
     }
   };
-
+  const convertTime = (timeString) => {
+    let date = new Date(timeString);
+    let options = {
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+      timeZone: "Asia/Kolkata",
+    };
+    let formattedTime = date.toLocaleString("en-US", options);
+    let day = date.toLocaleString("en-US", { day: "numeric" });
+    let month = date.toLocaleString("en-US", { month: "short" });
+    let all = `${month} ${day}   ${formattedTime}`;
+    return {
+      day: day,
+      month: month,
+      time: formattedTime,
+      all,
+    };
+  };
   return (
     <mainContext.Provider
       value={{
@@ -98,6 +116,7 @@ export const CreateMainContext = ({ children }) => {
         baseURL,
         logInLoading,
         loginError,
+        convertTime,
       }}
     >
       {children}
