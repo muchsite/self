@@ -3,6 +3,7 @@ import { useMainContext } from "../../utils/context";
 import axios from "axios";
 import LoadnigMain from "../../components/loading/LoadnigMain";
 import "./events.scss";
+import { Link } from "react-router-dom";
 const EventsAll = () => {
   const { baseURL, convertTime } = useMainContext();
   const [data, setData] = useState({});
@@ -49,7 +50,7 @@ const EventsAll = () => {
               <>
                 {data?.events?.map((item, inedx) => {
                   return (
-                    <div className="a_event" key={inedx}>
+                    <Link className="a_event" to={`${item.slug}`} key={inedx}>
                       <img src={item.e_img} alt="" />
                       <div className="a_event_info">
                         <p className="a_event_title">
@@ -65,7 +66,7 @@ const EventsAll = () => {
                           Cost: <span>{item.cost}$</span>
                         </p>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })}
               </>

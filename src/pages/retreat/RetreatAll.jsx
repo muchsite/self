@@ -3,6 +3,7 @@ import { useMainContext } from "../../utils/context";
 import axios from "axios";
 import LoadnigMain from "../../components/loading/LoadnigMain";
 import "./retreat.scss";
+import { Link } from "react-router-dom";
 const RetreatAll = () => {
   const { baseURL } = useMainContext();
   const [data, setData] = useState({});
@@ -49,7 +50,7 @@ const RetreatAll = () => {
             {active
               ? data.active_camps?.map((item, index) => {
                   return (
-                    <div className="retreat_item" key={index}>
+                    <Link className="retreat_item" to={item.slug} key={index}>
                       <img src={item.camp_poster} alt="" />
                       <div className="retreat_info">
                         <p className="retreat_card_title">{item.camp}</p>
@@ -59,7 +60,7 @@ const RetreatAll = () => {
                         </div>
                         <p className="retreat_cost">Price: {item.cost}$</p>
                       </div>
-                    </div>
+                    </Link>
                   );
                 })
               : data.archived?.map((item, index) => {

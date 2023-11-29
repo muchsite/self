@@ -5,11 +5,11 @@ import "./one.scss";
 import { useParams } from "react-router-dom";
 import LoadnigMain from "../../components/loading/LoadnigMain";
 import Loading from "../../components/loading/Loading";
-const CourseOne = () => {
+const EventOne = () => {
   const { baseURL } = useMainContext();
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(false);
-  const { courseID } = useParams();
+  const { eventID } = useParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [number, setNumber] = useState("");
@@ -23,8 +23,8 @@ const CourseOne = () => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(baseURL + `api/course/${courseID}/`);
-        setData(res.data);
+        const res = await axios.get(baseURL + `api/event/${eventID}/`);
+        setData(res.data.course);
         setLoading(false);
       } catch (error) {
         setLoading(false);
@@ -38,19 +38,16 @@ const CourseOne = () => {
     e.preventDefault();
     setSending(true);
     try {
-      const res = await axios.post(
-        baseURL + `api/course/${data.course.slug}/`,
-        {
-          name,
-          email,
-          wh_num: number,
-          age,
-          city,
-          job,
-          transaction_id: tId,
-          course: data.course.id,
-        }
-      );
+      const res = await axios.post(baseURL + `api/event/${data.slug}/`, {
+        name,
+        email,
+        wh_num: number,
+        age,
+        city,
+        job,
+        transaction_id: tId,
+        course: data.id,
+      });
       setSending(false);
       setSent(true);
       setName("");
@@ -66,27 +63,26 @@ const CourseOne = () => {
       console.log(error);
     }
   };
+
   return (
     <>
       {loading ? (
         <LoadnigMain />
       ) : (
-        <div className="s_course_container">
-          <h2 className="s_course_title"> {data.course?.c_title}</h2>
-          <img src={data.course?.c_img} alt="" className="s_course_img" />
-          <div className="s_course_info">
-            <p>{data.course?.cost}</p>
-            <p>{data.course?.facilitator}</p>
+        <div className="s_event_container">
+          <h2>{data.event}</h2>
+          <img src={data.e_img} alt="" />
+          <div className="s_event_info">
+            <p>{data.cost}</p>
+            <p>{data.date_time}</p>
           </div>
-          <div className="s_course_desc">
-            <div
-              dangerouslySetInnerHTML={{ __html: data.course?.c_desc }}
-            ></div>
+          <div className="s_event_desc">
+            <div dangerouslySetInnerHTML={{ __html: data.details }}></div>
           </div>
-          <div className="s_course_form">
+          <div className="s_event_form">
             <form onSubmit={handleSubmit}>
-              <div className="s_courses_input_container">
-                <div className="s_course_input">
+              <div className="s_event_input_container">
+                <div className="s_event_input">
                   <input
                     type="text"
                     placeholder="Name:"
@@ -95,7 +91,7 @@ const CourseOne = () => {
                     onChange={(e) => setName(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="text"
                     placeholder="Email:"
@@ -104,7 +100,7 @@ const CourseOne = () => {
                     onChange={(e) => setEmail(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="number"
                     placeholder="Nunber:"
@@ -113,7 +109,7 @@ const CourseOne = () => {
                     onChange={(e) => setNumber(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="text"
                     placeholder="City:"
@@ -122,7 +118,7 @@ const CourseOne = () => {
                     onChange={(e) => setCity(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="text"
                     placeholder="Job:"
@@ -131,7 +127,7 @@ const CourseOne = () => {
                     onChange={(e) => setJob(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="number"
                     placeholder="Age:"
@@ -140,7 +136,7 @@ const CourseOne = () => {
                     onChange={(e) => setAge(e.currentTarget.value)}
                   />
                 </div>
-                <div className="s_course_input">
+                <div className="s_event_input">
                   <input
                     type="number"
                     placeholder="Transaction id:"
@@ -160,4 +156,4 @@ const CourseOne = () => {
   );
 };
 
-export default CourseOne;
+export default EventOne;

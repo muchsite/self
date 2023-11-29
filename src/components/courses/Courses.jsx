@@ -55,7 +55,9 @@ const Courses = ({ courses }) => {
                         <span> Free!</span>
                       )}
                     </p>
-                    <Link className="learn_more">Learn More!</Link>
+                    <Link className="learn_more" to={`/courses/${item.slug}`}>
+                      Learn More!
+                    </Link>
                   </div>
                   <div
                     className="course_btn_container"
@@ -90,7 +92,9 @@ const Courses = ({ courses }) => {
                         <span> Free!</span>
                       )}
                     </p>
-                    <Link className="learn_more">Learn More!</Link>
+                    <Link className="learn_more" to={`/courses/${item.slug}`}>
+                      Learn More!
+                    </Link>
                   </div>
                 </div>
               </Parallax>
