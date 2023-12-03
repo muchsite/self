@@ -22,16 +22,14 @@ $darckGrey: #333333;
 $background: #fdf5ed;
 $gr: #c47843;
 $grFooter: #3f2716;
-//
-// global
-//
+
 $rightBack: #1b1c31;
 $leftBack: #222338;
 $blueBack: #222338;
 $dashLime: #00ffc38e;
 $tableDark: #1d3442;
 $tableLight: #26424f;
-
+$error: rgb(255, 60, 0) d;
 //
 // mixins
 //
@@ -62,4 +60,10 @@ input::-webkit-inner-spin-button {
 
 input[type="number"] {
   -moz-appearance: textfield;
+}
+//
+// global
+//
+.outline_red {
+  outline: 1px solid red !important;
 }
